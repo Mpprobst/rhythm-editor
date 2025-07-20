@@ -8,5 +8,5 @@ using UnityEngine;
 /// </summary>
 public class InspectorNote : MonoBehaviour
 {
-    [SerializeField][TextArea] private string note;
+    [SerializeField][TextArea(5,10)] private string note;
 }

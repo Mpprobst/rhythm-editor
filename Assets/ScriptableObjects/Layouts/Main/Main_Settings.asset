@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f63a28fb97e0e44ea6aac28dc33f6a7, type: 3}
+  m_Name: Main_Settings
+  m_EditorClassIdentifier: 
+  elementType: 2
+  elementPrefab: {fileID: 4429121943696435980, guid: f90c425644a5f9e49911757c158e4fa9, type: 3}
+  elementName: Settings
+  description: 
+  icon: {fileID: 0}
+  stacking: 0
+  shortcut: 
+  isToggle: 0
+  popoutOptions:
+  - optionType: 1
+    optionName: Dark Mode
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 795086842757008906, guid: 97ce495e707dca241a4e2368462ebf07, type: 3}
+    placeholder: 
+    min: 0
+    max: 0
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+  - optionType: 3
+    optionName: Nimber
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 8303171234664761828, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+    placeholder: 
+    min: 0
+    max: 1
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+  popoutPrefab: {fileID: 5415579742428469937, guid: 300de8abab9365d4f9925c703ea25eca, type: 3}

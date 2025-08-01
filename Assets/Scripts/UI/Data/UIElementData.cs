@@ -19,7 +19,7 @@ public class ElementTypeAttribute : System.Attribute
 
 public enum StackingDirection { NONE, HORIZONTAL, VERTICAL }
 
-[CreateAssetMenu(fileName = "UIStyleData", menuName = "ScriptableObjects/UI/UIElementData", order = 2)]
+[CreateAssetMenu(fileName = "UIElementData", menuName = "ScriptableObjects/UI/UIElementData", order = 2)]
 public class UIElementData : ScriptableObject
 {
     [SkipField] public UIElementType elementType;
@@ -33,6 +33,7 @@ public class UIElementData : ScriptableObject
 
     // Button and Popout only
     [ElementType(UIElementType.BUTTON)] public KeyCode[] shortcut;
+    [ElementType(UIElementType.BUTTON)] public bool isToggle;
 
     // Popout only
     [ElementType(UIElementType.POPOUT)] public ElementInputOptionData[] popoutOptions = new ElementInputOptionData[0];
@@ -42,7 +43,7 @@ public class UIElementData : ScriptableObject
 
 
 // Option Data - Will be displayed in popouts
-public enum OptionType { ACTION, TEXT, NUMBER, DROPDOWN }
+public enum OptionType { ACTION, TOGGLE, TEXT, NUMBER, DROPDOWN }
 public class OptionTypeAttribute : System.Attribute 
 {
     public OptionType Type;
@@ -64,8 +65,9 @@ public class ElementInputOptionData
 
     public static bool OptionTypeComptaible(OptionType target, OptionType goal)
     {
-        if (compatibleTypes.ContainsKey(target) && compatibleTypes[target].Contains(goal)) return true;
-        return target <= goal;
+        if (compatibleTypes.ContainsKey(target))
+            return compatibleTypes[target].Contains(goal);
+        return target >= goal;
     }
 
     // A button, text, number, or dropdown item
@@ -73,7 +75,7 @@ public class ElementInputOptionData
     public string optionName;
     public string description;
     public Sprite icon;
-    public GameObject optionPrefab;
+    [SkipField] public GameObject optionPrefab;
 
     // text only
     [OptionType(OptionType.TEXT)] public string placeholder;
@@ -82,6 +84,7 @@ public class ElementInputOptionData
     [OptionType(OptionType.NUMBER)] public float min;
     [OptionType(OptionType.NUMBER)] public float max;
     [OptionType(OptionType.NUMBER)] public float defaultValue;
+    [OptionType(OptionType.NUMBER)] public float scale;
     [OptionType(OptionType.NUMBER)] public bool useSlider;
     [OptionType(OptionType.NUMBER)] public bool roundToInt;
 

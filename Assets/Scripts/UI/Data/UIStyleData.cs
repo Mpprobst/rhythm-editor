@@ -13,7 +13,7 @@ public class UIStyleData : ScriptableObject
     public Color iconColor;
     public Color iconColor_highlight;
     public Color textColor_primary;
-    public Color textColor_srimary;
+    public Color textColor_secondary;
     // no text highlight because it will use the same as icon
 
     public Sprite backgroundSprite;

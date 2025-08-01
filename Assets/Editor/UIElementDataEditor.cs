@@ -2,11 +2,12 @@ using System.Reflection;
 using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
+using Unity.VisualScripting;
 
 [CustomEditor(typeof(UIElementData)), CanEditMultipleObjects]
 public class UIElementDataEditor : Editor
 {
-    public SerializedProperty elementType_prop, elementPrefab_prop;
+    public SerializedProperty elementType_prop, elementPrefab_prop, popoutPrefab_prop;
     private SerializedProperty[] fieldProperties;
 
     private FieldInfo[] fields;
@@ -15,6 +16,7 @@ public class UIElementDataEditor : Editor
     {
         elementType_prop = serializedObject.FindProperty("elementType");
         elementPrefab_prop = serializedObject.FindProperty("elementPrefab");
+        popoutPrefab_prop = serializedObject.FindProperty("popoutPrefab");
 
         fields = typeof(UIElementData).GetFields(BindingFlags.Public | BindingFlags.Instance);
         fieldProperties = new SerializedProperty[fields.Length];
@@ -35,7 +37,9 @@ public class UIElementDataEditor : Editor
         EditorGUILayout.PropertyField(elementType_prop);
 
         UIElementType elementType = (UIElementType)elementType_prop.enumValueIndex;
-        elementPrefab_prop.objectReferenceValue = Resources.Load($"Prefabs/UI/Elements/UIElement_{Utils.ToHumanReadable(elementType)}");
+        string elementPrefabName = $"UI/Elements/UIElement_{Utils.ToHumanReadable(elementType)}";
+        if (elementType == UIElementType.POPOUT) elementPrefabName += "Button";
+        elementPrefab_prop.objectReferenceValue = Resources.Load(elementPrefabName);
 
         // reflection here is way more scalable, especially if we add new fields to our class later
         // otherwise we are finding 
@@ -51,6 +55,10 @@ public class UIElementDataEditor : Editor
                 EditorGUILayout.PropertyField(fieldProperties[i]);
             }
         }
+
+        EditorGUILayout.PropertyField(elementPrefab_prop);
+        if (popoutPrefab_prop.objectReferenceValue == null)
+            popoutPrefab_prop.objectReferenceValue = Resources.Load<Object>("UI/Popouts/PopoutBase");
 
         serializedObject.ApplyModifiedProperties();
 

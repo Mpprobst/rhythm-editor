@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f63a28fb97e0e44ea6aac28dc33f6a7, type: 3}
+  m_Name: Main_PopupExample
+  m_EditorClassIdentifier: 
+  elementType: 2
+  elementPrefab: {fileID: 4429121943696435980, guid: f90c425644a5f9e49911757c158e4fa9, type: 3}
+  elementName: Example
+  description: 
+  icon: {fileID: 0}
+  stacking: 1
+  shortcut: 
+  isToggle: 1
+  popoutOptions:
+  - optionType: 0
+    optionName: Action
+    description: Default Action
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 1594579095579054170, guid: 9a20faaf951919c4b8dadb0316fb0ea3, type: 3}
+    placeholder: 
+    min: 0
+    max: 0
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+  - optionType: 1
+    optionName: Toggle
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 795086842757008906, guid: 97ce495e707dca241a4e2368462ebf07, type: 3}
+    placeholder: 
+    min: 0
+    max: 0
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+  - optionType: 2
+    optionName: Text
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 5166355709975138858, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
+    placeholder: Default Text
+    min: 0
+    max: 0
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+  - optionType: 3
+    optionName: Number
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 8303171234664761828, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+    placeholder: Default Text
+    min: 0
+    max: 2
+    defaultValue: 1
+    scale: 2
+    useSlider: 1
+    roundToInt: 0
+    options: []
+  - optionType: 3
+    optionName: Integer
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 8303171234664761828, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+    placeholder: Default Text
+    min: 0
+    max: 10
+    defaultValue: 5
+    scale: 1
+    useSlider: 1
+    roundToInt: 1
+    options: []
+  - optionType: 4
+    optionName: Dropdown
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 940146509550251598, guid: a4d2c1c5795133c4690ab0d16d5d0814, type: 3}
+    placeholder: Default Text
+    min: 0
+    max: 10
+    defaultValue: 5
+    scale: 1
+    useSlider: 1
+    roundToInt: 1
+    options:
+    - optionName: Option A
+      optionIcon: {fileID: 0}
+    - optionName: Option B
+      optionIcon: {fileID: 0}
+    - optionName: Option C
+      optionIcon: {fileID: 0}
+  popoutPrefab: {fileID: 5415579742428469937, guid: 300de8abab9365d4f9925c703ea25eca, type: 3}

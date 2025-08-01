@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f63a28fb97e0e44ea6aac28dc33f6a7, type: 3}
-  m_Name: UIStyleData
+  m_Name: Main_InstrumentEditorButton
   m_EditorClassIdentifier: 
-  elementType: 0
-  elementPrefab: {fileID: 0}
-  elementName: 
-  description: 
+  elementType: 1
+  elementPrefab: {fileID: 7823795217994410700, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
+  elementName: Instrument Editor
+  description: Opens the song instrument view
   icon: {fileID: 0}
-  stacking: 0
-  shortcut: 
+  stacking: 1
+  shortcut: 32000000
+  isToggle: 1
   popoutOptions: []
-  popoutPrefab: {fileID: 0}
+  popoutPrefab: {fileID: 5415579742428469937, guid: 300de8abab9365d4f9925c703ea25eca, type: 3}

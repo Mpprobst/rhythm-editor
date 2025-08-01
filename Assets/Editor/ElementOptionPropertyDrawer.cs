@@ -58,22 +58,27 @@ public class ElementOptionPropertyDrawer : PropertyDrawer
                 // draw the property
                 EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight), fieldProperties[i]);
                 rect.y += EditorGUIUtility.singleLineHeight;
-                if (fieldProperties[i].isArray)
+                if (fieldProperties[i].isArray && fieldProperties[i].propertyType != SerializedPropertyType.String)
                 {
                     // TODO: if this is a dropdown, we should put the elements next to one another
                     // or create a custom property drawer for dropdown elements?
                     rect.y += EditorGUIUtility.singleLineHeight * fieldProperties[i].arraySize;
-                    if (fieldProperties[i].isExpanded) rect.y += EditorGUIUtility.singleLineHeight * 2;
+                    if (fieldProperties[i].isExpanded) rect.y += EditorGUIUtility.singleLineHeight * 3;
                 }
             }
         }
+
+        EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight), optionPrefab_prop);
+        rect.y += EditorGUIUtility.singleLineHeight;    // must manually inform the editor when to add spacing between elemements unlike in custom Editors
+        optionPrefab_prop.objectReferenceValue = Resources.Load<Object>($"UI/Options/PopoutOption_{Utils.ToHumanReadable(optionType)}");
+
     }
 
     // must manually set the height of the container we are drawing to 
     // much easier since we use reflection
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        int numProperties = 1;  // 5 properties +2 for description text area
+        int numProperties = 2; 
         Init(property);
        
         if (optionType_prop != null)
@@ -88,10 +93,10 @@ public class ElementOptionPropertyDrawer : PropertyDrawer
                 if (typeAttrib == null || ElementInputOptionData.OptionTypeComptaible(optionType, typeAttrib.Type))
                 {
                     numProperties++;
-                    if (fieldProperties[i].isArray)
+                    if (fieldProperties[i].isArray && fieldProperties[i].propertyType != SerializedPropertyType.String)
                     {
                         numProperties += fieldProperties[i].arraySize;  
-                        if (fieldProperties[i].isExpanded) numProperties += 3;  // + 3 for the +- button and gap underneath
+                        if (fieldProperties[i].isExpanded) numProperties += 4;  // + 4 for the +- button and gap underneath (takes up more room than you'd think)
                     }
                 }
             }

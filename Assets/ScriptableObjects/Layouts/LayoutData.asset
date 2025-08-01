@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa917d1cb4c978449b6fb7137db761f, type: 3}
+  m_Name: LayoutData
+  m_EditorClassIdentifier: 
+  primaryGroupData:
+  - groupName: Views
+    alignment: 1
+    buttonData:
+    - {fileID: 11400000, guid: 99b5f27b815fdbb4b9a538a61fc7631f, type: 2}
+    - {fileID: 11400000, guid: 3f7e6952c4762a546a219b047b003566, type: 2}
+    allowMultipleActiveButtons: 0
+  - groupName: Settings
+    alignment: 2
+    buttonData:
+    - {fileID: 11400000, guid: 72d0a4129b9b30c4b9738d0cacfa137a, type: 2}
+    allowMultipleActiveButtons: 0
+  secondaryGroupData:
+  - groupName: Extra
+    alignment: 0
+    buttonData:
+    - {fileID: 11400000, guid: 3cf6f559d1e2de241905e872c792c712, type: 2}
+    allowMultipleActiveButtons: 0
+  subLayout: {fileID: 11400000, guid: 7bc014ec3fd6e9543a70e9e71cd67ddf, type: 2}
+  layoutPrefab: {fileID: 0}
+  defaultPalette: {fileID: 11400000, guid: 6ed205ed77b45c2439a9ac665b9a987e, type: 2}

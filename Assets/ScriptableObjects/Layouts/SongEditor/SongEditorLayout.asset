@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa917d1cb4c978449b6fb7137db761f, type: 3}
+  m_Name: SongEditorLayout
+  m_EditorClassIdentifier: 
+  primaryGroupData:
+  - groupName: Title
+    alignment: 1
+    buttonData:
+    - {fileID: 11400000, guid: cad062082f142e140b46e4616e7b431d, type: 2}
+    allowMultipleActiveButtons: 0
+  secondaryGroupData:
+  - groupName: Tracks
+    alignment: 0
+    buttonData:
+    - {fileID: 11400000, guid: 229c5d5db24afc34faf7d52379fd2f87, type: 2}
+    allowMultipleActiveButtons: 0
+  subLayout: {fileID: 0}
+  layoutPrefab: {fileID: 1730468420525582191, guid: 560aeb7a002068441b4d0451fbc0fe29, type: 3}
+  defaultPalette: {fileID: 11400000, guid: 6ed205ed77b45c2439a9ac665b9a987e, type: 2}

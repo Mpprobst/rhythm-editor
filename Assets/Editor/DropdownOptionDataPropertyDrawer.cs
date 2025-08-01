@@ -12,7 +12,6 @@ public class DropdownOptionDataPropertyDrawer : PropertyDrawer
     {
         optionName_prop = property.FindPropertyRelative("optionName");
         optionIcon_prop = property.FindPropertyRelative("optionIcon");
-
     }
 
     // if you don't use the serialized properties, your changes in the inspector window will not apply to your object!
@@ -32,13 +31,6 @@ public class DropdownOptionDataPropertyDrawer : PropertyDrawer
 
         EditorGUI.ObjectField(iconRect, optionIcon_prop, GUIContent.none);
         EditorGUI.PropertyField(nameRect, optionName_prop, GUIContent.none);
-
-        int elementIndent = EditorGUI.indentLevel;
-        EditorGUI.indentLevel = 0;
-
-        EditorGUI.indentLevel = elementIndent;
-
-
     } 
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)

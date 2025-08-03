@@ -15,18 +15,12 @@ public class PopoutOption_Action : PopoutOption
     public override void SetInfo(ElementInputOptionData info)
     {
         base.SetInfo(info);
-        button.onClick.AddListener(OnClick);
     }
 
-    protected override float GetOptionHeight()
+    protected override void Awake()
     {
-        // unique case where we aren't calling base because the label and icon are contained within the button
-        float h = 0;
-        if (button)
-            h += button.image.rectTransform.rect.height;
-        if (description && !string.IsNullOrEmpty(description.text))
-            h += description.rectTransform.rect.height;
-        return h;
+        base.Awake();
+        button.onClick.AddListener(OnClick);
     }
 
     // may seem odd to add this layer between the Unity button and whatever this is listening to,

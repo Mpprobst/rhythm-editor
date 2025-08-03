@@ -108,6 +108,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6824852097487507217, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: optionName
+      value: Nimber
+      objectReference: {fileID: 0}
     - target: {fileID: 6995831023177163810, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -266,6 +270,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2541901874696642362}
     m_Modifications:
+    - target: {fileID: 767488095457893185, guid: 97ce495e707dca241a4e2368462ebf07, type: 3}
+      propertyPath: optionName
+      value: Dark Mode
+      objectReference: {fileID: 0}
     - target: {fileID: 795086842757008906, guid: 97ce495e707dca241a4e2368462ebf07, type: 3}
       propertyPath: m_Name
       value: PopoutOption_Toggle_Dark Mode

@@ -7,13 +7,14 @@ using Unity.VisualScripting;
 [CustomEditor(typeof(UIElementData)), CanEditMultipleObjects]
 public class UIElementDataEditor : Editor
 {
-    public SerializedProperty elementType_prop, elementPrefab_prop, popoutPrefab_prop;
+    public SerializedProperty elementName_prop, elementType_prop, elementPrefab_prop, popoutPrefab_prop;
     private SerializedProperty[] fieldProperties;
 
     private FieldInfo[] fields;
 
     private void OnEnable()
     {
+        elementName_prop = serializedObject.FindProperty("elementName");
         elementType_prop = serializedObject.FindProperty("elementType");
         elementPrefab_prop = serializedObject.FindProperty("elementPrefab");
         popoutPrefab_prop = serializedObject.FindProperty("popoutPrefab");
@@ -38,7 +39,16 @@ public class UIElementDataEditor : Editor
 
         UIElementType elementType = (UIElementType)elementType_prop.enumValueIndex;
         string elementPrefabName = $"UI/Elements/UIElement_{Utils.ToHumanReadable(elementType)}";
-        if (elementType == UIElementType.POPOUT) elementPrefabName += "Button";
+        if (elementType == UIElementType.POPOUT)
+        {
+            elementPrefabName += "Button";
+
+            string popoutName = $"UI/Popouts/{elementName_prop.stringValue}_Popout";
+            Object popoutPrefab = Resources.Load<Object>(popoutName);
+            if (popoutPrefab == null && popoutPrefab_prop.objectReferenceValue)
+                popoutPrefab = Resources.Load<Object>("UI/Popouts/PopoutBase");
+            popoutPrefab_prop.objectReferenceValue = popoutPrefab; 
+        }
         elementPrefab_prop.objectReferenceValue = Resources.Load(elementPrefabName);
 
         // reflection here is way more scalable, especially if we add new fields to our class later
@@ -55,10 +65,6 @@ public class UIElementDataEditor : Editor
                 EditorGUILayout.PropertyField(fieldProperties[i]);
             }
         }
-
-        EditorGUILayout.PropertyField(elementPrefab_prop);
-        if (popoutPrefab_prop.objectReferenceValue == null)
-            popoutPrefab_prop.objectReferenceValue = Resources.Load<Object>("UI/Popouts/PopoutBase");
 
         serializedObject.ApplyModifiedProperties();
 

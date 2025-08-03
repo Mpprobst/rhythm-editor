@@ -43,7 +43,7 @@ public class UIElementData : ScriptableObject
 
 
 // Option Data - Will be displayed in popouts
-public enum OptionType { ACTION, TOGGLE, TEXT, NUMBER, DROPDOWN }
+public enum OptionType { ACTION, TOGGLE, TEXT, NUMBER, DROPDOWN, FILE }
 public class OptionTypeAttribute : System.Attribute 
 {
     public OptionType Type;
@@ -61,6 +61,7 @@ public class ElementInputOptionData
     public static Dictionary<OptionType, OptionType[]> compatibleTypes = new Dictionary<OptionType, OptionType[]>()
     {
         { OptionType.DROPDOWN, new OptionType[] { OptionType.ACTION, OptionType.DROPDOWN} },
+        { OptionType.FILE, new OptionType[] { OptionType.ACTION, OptionType.FILE} },
     };
 
     public static bool OptionTypeComptaible(OptionType target, OptionType goal)
@@ -90,6 +91,10 @@ public class ElementInputOptionData
 
     // dropdown only
     [OptionType(OptionType.DROPDOWN)] public DropdownOptionData[] options = new DropdownOptionData[0];
+
+    // file only
+    [OptionType(OptionType.FILE)] public FileType fileType;
+
 }
 
 [Serializable]
@@ -98,3 +103,5 @@ public class DropdownOptionData
     public string optionName;
     public Sprite optionIcon;
 }
+
+public enum FileType { MP3, IMAGE, TRACK }

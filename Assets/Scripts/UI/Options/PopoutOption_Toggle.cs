@@ -14,17 +14,13 @@ public class PopoutOption_Toggle : PopoutOption
     public override void SetInfo(ElementInputOptionData info)
     {
         base.SetInfo(info);
-        toggle.onValueChange.AddListener(SetValue);
         valueType = typeof(bool);
     }
 
-    protected override float GetOptionHeight()
+    protected override void Awake()
     {
-        float h = base.GetOptionHeight();
-        // don't need toggle height because it is in line with the icon/title
-        //if (toggled)
-        //    h += toggle.GetComponent<RectTransform>().rect.height;
-        return h;
+        base.Awake(); 
+        toggle.onValueChange.AddListener(SetValue);
     }
 
     public bool GetValue()

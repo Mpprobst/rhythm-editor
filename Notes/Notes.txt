@@ -1,0 +1,40 @@
+TODO
+
+General Elements
+1. File picker
+	a. designate file type
+		i. image, mp3, or trackfile (for now)
+2. Pooled UI Scroller
+3. Element Drag
+	a. an interface
+		i. requires an onPointerDown?
+		ii. popouts have a region at top for this
+		iii. notes implement the interface
+4. Tooltip hover
+5. Keep element on screen
+
+Song Editor Panel
+1. Add new tracks
+	a. edit track info
+		i. key/button as input
+		ii. name and other details
+		iii.  color
+	b. rearrange tracks
+2. Add notes to track
+	a. long notes
+	b. combo notes (hammer on)
+3. Note selection
+	a. mouse click
+		i. requires cursor position
+		ii. maybe a click and drag?
+	b. copy/paste
+4. Sections
+	a. add section
+	b. set section limits
+	c. move section
+	d. copy section
+	e. hide/expand section
+		i. and have notes appropriately follow
+
+Instrument Editor Panel
+1. 

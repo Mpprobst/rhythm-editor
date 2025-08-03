@@ -112,6 +112,9 @@ public static class LayoutGenerator
                     SpawnPopout(elementData, layout.popoutContainer, ref popoutButton.popout);
                     if (existingPopouts.Contains(popoutButton.popout))
                         existingPopouts.Remove(popoutButton.popout);
+                    popoutButton.popout.onClose = new UnityEngine.Events.UnityEvent();
+                    //popoutButton.popout.onClose.AddListener(delegate { popoutButton.SetActiveNoNotify(false); });   // no notify because the popout already knows it is being closed
+
                     Vector2 anchorPivot = Utils.GetAnchorFromAlignment(screenSide, alignment);
                     RectTransform popoutRect = popoutButton.popout.GetComponent<RectTransform>();
                     popoutRect.pivot = anchorPivot;

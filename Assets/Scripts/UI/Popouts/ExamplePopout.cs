@@ -11,7 +11,7 @@ public class ExamplePopout : UIElement_Popout
     private PopoutOption_Number numberOption;
     private PopoutOption_Dropdown dropdownOption;
 
-    protected void Awake()
+    protected void Start()
     {
         actionOption = GetPopout<PopoutOption_Action>("Action");
         actionOption.onActivate.AddListener(OnAction);

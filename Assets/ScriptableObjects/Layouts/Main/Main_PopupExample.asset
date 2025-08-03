@@ -34,6 +34,7 @@ MonoBehaviour:
     useSlider: 0
     roundToInt: 0
     options: []
+    fileType: 0
   - optionType: 1
     optionName: Toggle
     description: 
@@ -47,6 +48,7 @@ MonoBehaviour:
     useSlider: 0
     roundToInt: 0
     options: []
+    fileType: 0
   - optionType: 2
     optionName: Text
     description: 
@@ -60,6 +62,7 @@ MonoBehaviour:
     useSlider: 0
     roundToInt: 0
     options: []
+    fileType: 0
   - optionType: 3
     optionName: Number
     description: 
@@ -73,6 +76,7 @@ MonoBehaviour:
     useSlider: 1
     roundToInt: 0
     options: []
+    fileType: 0
   - optionType: 3
     optionName: Integer
     description: 
@@ -86,6 +90,7 @@ MonoBehaviour:
     useSlider: 1
     roundToInt: 1
     options: []
+    fileType: 0
   - optionType: 4
     optionName: Dropdown
     description: 
@@ -105,4 +110,25 @@ MonoBehaviour:
       optionIcon: {fileID: 0}
     - optionName: Option C
       optionIcon: {fileID: 0}
-  popoutPrefab: {fileID: 5415579742428469937, guid: 300de8abab9365d4f9925c703ea25eca, type: 3}
+    fileType: 0
+  - optionType: 5
+    optionName: File
+    description: Gets a file off disk
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 7350818157209317526, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
+    placeholder: Default Text
+    min: 0
+    max: 10
+    defaultValue: 5
+    scale: 1
+    useSlider: 1
+    roundToInt: 1
+    options:
+    - optionName: Option A
+      optionIcon: {fileID: 0}
+    - optionName: Option B
+      optionIcon: {fileID: 0}
+    - optionName: Option C
+      optionIcon: {fileID: 0}
+    fileType: 1
+  popoutPrefab: {fileID: 3458672231847614573, guid: 79638d54d66b371438454187d675cb26, type: 3}

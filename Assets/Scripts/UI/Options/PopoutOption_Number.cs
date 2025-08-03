@@ -22,7 +22,6 @@ public class PopoutOption_Number : PopoutOption_Text
             slider.maxValue = info.max;
             slider.SetValueWithoutNotify(info.defaultValue);
             slider.wholeNumbers = info.roundToInt;
-            slider.onValueChanged.AddListener(SetValue);
         }
         else
         {
@@ -31,14 +30,19 @@ public class PopoutOption_Number : PopoutOption_Text
         scale = info.scale;
     }
 
+    protected override void Awake()
+    {
+        base.Awake();
+        slider.onValueChanged.AddListener(SetValue);
+    }
+
     protected override float GetOptionHeight()
     {
         float h = base.GetOptionHeight();
         // if the text input is there, we don't need to add any more height
         // however if we are only using the slider, we use the height of the rect that contains both the slider and the possible text input
         if (inputField == null)
-            if (slider)
-                h += slider.transform.parent.GetComponent<RectTransform>().rect.height;
+            h += slider.transform.parent.GetComponent<RectTransform>().rect.height;
         return h;
     }
 
@@ -59,13 +63,13 @@ public class PopoutOption_Number : PopoutOption_Text
 
     public void SetValue(float val)
     {
+        val = val / scale;
         SetValueNoNotify(val); 
         onNumberChanged.Invoke(val);
     }
 
     public void SetValueNoNotify(float val)
     {
-        val = val / scale;
         if (slider)
             slider.SetValueWithoutNotify(val);
         base.SetValueNoNotify(val.ToString());

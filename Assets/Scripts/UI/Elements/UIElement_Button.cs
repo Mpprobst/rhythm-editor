@@ -33,10 +33,16 @@ public class UIElement_Button : UIElement_Label
 
     public virtual void SetActive(bool isOn)
     {
-        isActive = isOn;
-        button.image.color = isActive ? highlightColor : baseColor;
+        if (isToggle) isActive = isOn; // looks weird, but only toggles really care about button status
+        SetActiveNoNotify(isOn);
         if (onSelect != null)
             onSelect.Invoke(id);
+    }
+
+    public virtual void SetActiveNoNotify(bool isOn)
+    {
+        isActive = isOn;
+        button.image.color = isActive ? highlightColor : baseColor;
     }
 
     public override void SetColors(UIStyleData style)

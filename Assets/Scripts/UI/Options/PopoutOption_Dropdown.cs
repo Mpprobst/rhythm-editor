@@ -23,14 +23,18 @@ public class PopoutOption_Dropdown : PopoutOption
             options.Add(new Dropdown.OptionData(info.options[i].optionName, info.options[i].optionIcon));
         }
         dropdown.options = options;
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
         dropdown.onValueChanged.AddListener(SetValue);
     }
 
     protected override float GetOptionHeight()
     {
         float h = base.GetOptionHeight();
-        if (dropdown && dropdown.gameObject.activeInHierarchy)
-            h += dropdown.GetComponent<RectTransform>().rect.height;
+        h += dropdown.GetComponent<RectTransform>().rect.height;
         return h;
     }
 

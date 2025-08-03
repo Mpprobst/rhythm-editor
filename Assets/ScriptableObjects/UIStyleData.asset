@@ -20,5 +20,5 @@ MonoBehaviour:
   textColor_primary: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
   textColor_secondary: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
   backgroundSprite: {fileID: 0}
-  buttonSprite: {fileID: 0}
+  buttonSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

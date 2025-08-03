@@ -18,6 +18,11 @@ public class PopoutOption_Text : PopoutOption
         base.SetInfo(info);
         valueType = typeof(string);
         inputField.placeholder.GetComponent<Text>().text = info.placeholder;
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
         inputField.onValueChanged.AddListener(SetValue);
     }
 

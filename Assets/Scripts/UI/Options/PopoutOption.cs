@@ -16,12 +16,7 @@ public abstract class PopoutOption : MonoBehaviour, IUIStyle
 
     protected object value;
     protected Type valueType;
-    public string Name { get { return optionName; } }
-    private string optionName;
-
-
-    // sums up the height of active RectTransforms as we set information. Needed really only for generated elements on setup
-    // cached because we want to use function overrides.
+    public string optionName;
 
     public virtual void SetInfo(ElementInputOptionData info)
     {
@@ -43,13 +38,20 @@ public abstract class PopoutOption : MonoBehaviour, IUIStyle
         }
     }
 
+    protected virtual void Awake()
+    {
+        // must setup on value change events in awake (or in inspector but this feels better to me
+    }
+
     // WARNING: elements can have height set to 0 due to previously failed generations of UI. Shouldn't be happening anymore but it is a known issue
     protected virtual float GetOptionHeight()
     {
         float h = 0;
-        if (label)
+        if (label.transform.parent.GetComponent<LayoutGroup>())    // several option labels will be contained by another rect. if so, the label's height is like 0 because it relies on the layout group for its height.
+            h += label.transform.parent.GetComponent<RectTransform>().rect.height;
+        else
             h += label.rectTransform.rect.height;
-        if (description && !string.IsNullOrEmpty( description.text))
+        if (description && !string.IsNullOrEmpty(description.text))
             h += description.rectTransform.rect.height;
         // icon usually within the same component as the label and we will always have a label
         return h;
@@ -62,10 +64,9 @@ public abstract class PopoutOption : MonoBehaviour, IUIStyle
         float h = GetOptionHeight();
         if (h < 20)
         {
-            Debug.LogWarning($"Very small height detected for {name}. Please make sure no child elements have a proper height. If problem persists, delete the prefab and all scene references and regenerate");
+            Debug.LogWarning($"Very small height detected for {name} {h}. Please make sure no child elements have a proper height. If problem persists, delete the prefab and all scene references and regenerate");
         }
 
-        Debug.Log($"{name} height - {h}");
         RectTransform rxForm = GetComponent<RectTransform>();
         rxForm.sizeDelta = new Vector2(rxForm.rect.width, h);
         if (rxForm.GetComponent<LayoutGroup>() != null)

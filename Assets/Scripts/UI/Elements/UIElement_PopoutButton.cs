@@ -15,8 +15,23 @@ public class UIElement_PopoutButton : UIElement_Button
     public override void SetActive(bool isOn)
     {
         base.SetActive(isOn);
-        if (isActive) popout.Open();
-        else          popout.Close();
+        if (isActive)
+        {
+            popout.onClose.RemoveListener(ClosePopout);
+            popout.onClose.AddListener(ClosePopout);
+            popout.Open();
+        }
+        else popout.Close();
+    }
+
+    private void ClosePopout()
+    {
+        SetActiveNoNotify(false);
+    }
+
+    public override void SetActiveNoNotify(bool isOn)
+    {
+        base.SetActiveNoNotify(isOn);   // TODO: might actually need to send an event for 
     }
 
     public override void SetColors(UIStyleData style)

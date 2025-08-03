@@ -63,8 +63,7 @@ public class PopoutOption_Number : PopoutOption_Text
 
     public void SetValue(float val)
     {
-        val = val / scale;
-        SetValueNoNotify(val); 
+        SetValueNoNotify(val / scale); 
         onNumberChanged.Invoke(val);
     }
 
@@ -72,7 +71,9 @@ public class PopoutOption_Number : PopoutOption_Text
     {
         if (slider)
             slider.SetValueWithoutNotify(val);
-        base.SetValueNoNotify(val.ToString());
+        if (Application.isPlaying)  // causing an issue when generating
+            inputField.SetTextWithoutNotify(val.ToString());
+        base.SetValue(val);
     }
 
     public override void SetColors(UIStyleData style)

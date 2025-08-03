@@ -94,7 +94,6 @@ public class ElementInputOptionData
 
     // file only
     [OptionType(OptionType.FILE)] public FileType fileType;
-
 }
 
 [Serializable]

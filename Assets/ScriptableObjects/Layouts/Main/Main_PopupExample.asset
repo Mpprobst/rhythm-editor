@@ -113,7 +113,7 @@ MonoBehaviour:
     fileType: 0
   - optionType: 5
     optionName: File
-    description: Gets a file off disk
+    description: Please select a Image
     icon: {fileID: 0}
     optionPrefab: {fileID: 7350818157209317526, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
     placeholder: Default Text

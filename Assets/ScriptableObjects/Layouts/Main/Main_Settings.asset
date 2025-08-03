@@ -34,6 +34,7 @@ MonoBehaviour:
     useSlider: 0
     roundToInt: 0
     options: []
+    fileType: 0
   - optionType: 3
     optionName: Nimber
     description: 
@@ -47,4 +48,5 @@ MonoBehaviour:
     useSlider: 0
     roundToInt: 0
     options: []
-  popoutPrefab: {fileID: 5415579742428469937, guid: 300de8abab9365d4f9925c703ea25eca, type: 3}
+    fileType: 0
+  popoutPrefab: {fileID: 495404450411582926, guid: 845d07a6a8c3a1c4ba63c5525ca4bd72, type: 3}

@@ -1,20 +1,27 @@
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using SimpleFileBrowser;
+using Unity.VisualScripting;
 
 public class PopoutOption_File : PopoutOption_Action
 {
+    [SerializeField] protected RawImage loadedImage;
     // display a button that opens a file browser when clicked
     // based on file type, a differnt preview icon can be shown
     public FileType fileType;
-    [Tooltip("")] public Sprite searchSprite;
 
     public override void SetInfo(ElementInputOptionData info)
     {
+        fileType = info.fileType;
+        info.icon = null;
+        info.description = "Please select a " + Utils.ToHumanReadable(fileType);
         base.SetInfo(info);
-        // if no icon, just show a search sprite
+        label.gameObject.SetActive(true);
+        icon.sprite = Resources.Load<Sprite>($"Sprites/{fileType.ToString()}");
+        icon.gameObject.SetActive(true);
     }
 
     protected override void Awake()
@@ -32,11 +39,46 @@ public class PopoutOption_File : PopoutOption_Action
         // show files from the active directory?
         // would be nice to have some default assets from Streaming Assets I think
         base.OnClick();
-        FileBrowser.ShowLoadDialog( ( paths ) => { Debug.Log( "Selected: " + paths[0] ); },
+        FileBrowser.ShowLoadDialog(FileSelected,
         						   () => { Debug.Log( "Canceled" ); },
-        						   FileBrowser.PickMode.Folders, false, null, null, "Select Folder", "Select" );
+        						   FileBrowser.PickMode.FilesAndFolders, false, null, null, "Select Folder", "Select" );
     }
 
+    private void FileSelected(string[] paths)
+    {
+        if (fileType == FileType.IMAGE)
+        {
+            Texture2D tex = new Texture2D(1, 1);
+            tex.LoadImage(File.ReadAllBytes(paths[0]));
+            float w = tex.width;
+            float h = tex.height;
+            float aspect = w / h;
+            AspectRatioFitter arFitter = icon.GetComponent<AspectRatioFitter>();    
+            if (arFitter)
+            {
+                AspectRatioFitter.AspectMode aspectMode = AspectRatioFitter.AspectMode.WidthControlsHeight;
+                if (aspect > 1)
+                {
+                    aspect = 1f / aspect;
+                    aspectMode = AspectRatioFitter.AspectMode.HeightControlsWidth;
+                }
+                arFitter.aspectMode = aspectMode;
+                arFitter.aspectRatio = aspect;
+            }
+
+            icon.gameObject.SetActive(false);
+            loadedImage.gameObject.SetActive(true);
+            loadedImage.texture = tex;
+            
+            description.text = Path.GetFileName(paths[0]);
+        }
+        else
+        {
+            icon.gameObject.SetActive(true);
+            loadedImage.gameObject.SetActive(false);
+        }
+
+    }    
 
     public override void SetColors(UIStyleData style)
     {

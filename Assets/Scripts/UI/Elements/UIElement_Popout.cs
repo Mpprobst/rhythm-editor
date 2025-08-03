@@ -25,7 +25,7 @@ public class UIElement_Popout : MonoBehaviour, IUIStyle
     public void SetInfo(string title)
     {
         titleLabel.text = title;
-        Close();
+        //Close();
     }
 
     // should be openable from several sources

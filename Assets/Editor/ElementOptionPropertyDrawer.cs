@@ -19,6 +19,7 @@ public class ElementOptionPropertyDrawer : PropertyDrawer
         optionType_prop = property.FindPropertyRelative("optionType");
         optionPrefab_prop = property.FindPropertyRelative("optionPrefab");
 
+
         fields = typeof(ElementInputOptionData).GetFields(BindingFlags.Public | BindingFlags.Instance);
         fieldProperties = new SerializedProperty[fields.Length];
 
@@ -60,8 +61,6 @@ public class ElementOptionPropertyDrawer : PropertyDrawer
                 rect.y += EditorGUIUtility.singleLineHeight;
                 if (fieldProperties[i].isArray && fieldProperties[i].propertyType != SerializedPropertyType.String)
                 {
-                    // TODO: if this is a dropdown, we should put the elements next to one another
-                    // or create a custom property drawer for dropdown elements?
                     rect.y += EditorGUIUtility.singleLineHeight * fieldProperties[i].arraySize;
                     if (fieldProperties[i].isExpanded) rect.y += EditorGUIUtility.singleLineHeight * 3;
                 }

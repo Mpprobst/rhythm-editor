@@ -22,7 +22,7 @@ public class UIElement_PopoutButton : UIElement_Button
             popout.Open();
         }
         else popout.Close();
-    }
+    } 
 
     private void ClosePopout()
     {

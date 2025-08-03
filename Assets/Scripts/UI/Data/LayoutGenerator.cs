@@ -115,13 +115,22 @@ public static class LayoutGenerator
                     popoutButton.popout.onClose = new UnityEngine.Events.UnityEvent();
                     //popoutButton.popout.onClose.AddListener(delegate { popoutButton.SetActiveNoNotify(false); });   // no notify because the popout already knows it is being closed
 
+                    RectTransform popoutRXForm = popoutButton.popout.GetComponent<RectTransform>();
                     Vector2 anchorPivot = Utils.GetAnchorFromAlignment(screenSide, alignment);
-                    RectTransform popoutRect = popoutButton.popout.GetComponent<RectTransform>();
-                    popoutRect.pivot = anchorPivot;
+
+                    popoutRXForm.SetParent(popoutButton.transform);
+                    popoutRXForm.anchorMin = anchorPivot;
+                    popoutRXForm.anchorMax = anchorPivot;
+                    popoutRXForm.pivot = anchorPivot;
+
+                    // this is getting pretty close, might need to force the conetent size fitter to update first
                     RectTransform buttonRect = popoutButton.GetComponent<RectTransform>();
-                    Vector3 popoutPos = new Vector3(buttonRect.rect.width, buttonRect.rect.height, 0) / 2f;
-                    popoutPos += buttonRect.position;
-                    popoutRect.position = popoutPos;
+                    Vector2 popoutPos = Vector2.Scale(buttonRect.rect.size, buttonRect.pivot);// + popoutRXForm.rect.size / 2f;
+
+                    popoutRXForm.anchoredPosition = popoutPos;
+
+                    popoutRXForm.SetParent(layout.popoutContainer);
+                    popoutRXForm.localScale = Vector3.one;
                 }
             }
 
@@ -178,6 +187,7 @@ public static class LayoutGenerator
         foreach (var existing in existingOptions)
             GameObject.DestroyImmediate(existing);
 
+        LayoutRebuilder.ForceRebuildLayoutImmediate(popout.content.GetComponent<RectTransform>());
         EditorUtil.SaveObjectAsPrefab(popout.gameObject, "Assets/Resources/UI/Popouts");
     }
 

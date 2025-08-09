@@ -16,7 +16,7 @@ MonoBehaviour:
   backgroundColor_secondary: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
   backgroundColor_highlight: {r: 0.03856234, g: 0.8018868, b: 0, a: 1}
   iconColor: {r: 0, g: 0, b: 0, a: 1}
-  iconColor_highlight: {r: 0.54051507, g: 1, b: 0, a: 1}
+  iconColor_highlight: {r: 1, g: 1, b: 1, a: 1}
   textColor_primary: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
   textColor_secondary: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
   backgroundSprite: {fileID: 0}

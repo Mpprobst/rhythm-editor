@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f63a28fb97e0e44ea6aac28dc33f6a7, type: 3}
+  m_Name: Song_Settings
+  m_EditorClassIdentifier: 
+  elementType: 2
+  elementPrefab: {fileID: 4429121943696435980, guid: f90c425644a5f9e49911757c158e4fa9, type: 3}
+  elementName: Song Settings
+  description: 
+  icon: {fileID: 0}
+  stacking: 2
+  shortcut: 
+  isToggle: 0
+  popoutOptions:
+  - optionType: 5
+    optionName: Song
+    description: Please select a Mp3
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 7350818157209317526, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
+    placeholder: 
+    min: 0
+    max: 0
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+    fileType: 0
+  - optionType: 3
+    optionName: BPM
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 8303171234664761828, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+    placeholder: 
+    min: 1
+    max: 200
+    defaultValue: 120
+    scale: 1
+    useSlider: 1
+    roundToInt: 1
+    options: []
+    fileType: 0
+  popoutPrefab: {fileID: 5883671963969773728, guid: 2d625151ea78dd043ab3eb2990425438, type: 3}

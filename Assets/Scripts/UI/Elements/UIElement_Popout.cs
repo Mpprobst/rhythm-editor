@@ -28,6 +28,11 @@ public class UIElement_Popout : MonoBehaviour, IUIStyle
         //Close();
     }
 
+    protected void Start()
+    {
+        Close();
+    }
+
     // should be openable from several sources
     // so we don't set what opens it from set info but rather whatever prompted this to exist
     public void Open()

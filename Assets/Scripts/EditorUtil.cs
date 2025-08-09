@@ -10,7 +10,7 @@ public class EditorUtil
     public static void SaveObjectAsPrefab(GameObject prefabToSave, string savePath)
     {
 #if UNITY_EDITOR
-        if (prefabToSave == null) return;
+        if (prefabToSave == null || Application.isPlaying) return;
 
         if (!Directory.Exists(savePath))
         {

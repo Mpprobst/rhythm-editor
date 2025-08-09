@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using SimpleFileBrowser;
-using Unity.VisualScripting;
 
 public class PopoutOption_File : PopoutOption_Action
 {
@@ -12,6 +12,8 @@ public class PopoutOption_File : PopoutOption_Action
     // display a button that opens a file browser when clicked
     // based on file type, a differnt preview icon can be shown
     public FileType fileType;
+
+    public UnityEvent<string> onFileSelected;
 
     public override void SetInfo(ElementInputOptionData info)
     {
@@ -27,7 +29,7 @@ public class PopoutOption_File : PopoutOption_Action
     protected override void Awake()
     {
         base.Awake();
-        FileBrowser.SetFilters(true, new FileBrowser.Filter("Images", ".jpg", ".png"), new FileBrowser.Filter("Text Files", ".txt", ".pdf"));
+        FileBrowser.SetFilters(true, new FileBrowser.Filter("Images", ".jpg", ".png"), new FileBrowser.Filter("Text Files", ".txt", ".pdf"), new FileBrowser.Filter("Audio", ".wav"));
         FileBrowser.AddQuickLink("Default Assets", Application.persistentDataPath, null);
     }
 
@@ -78,6 +80,8 @@ public class PopoutOption_File : PopoutOption_Action
             loadedImage.gameObject.SetActive(false);
         }
 
+        if (onFileSelected != null)
+            onFileSelected.Invoke(paths[0]);
     }    
 
     public override void SetColors(UIStyleData style)

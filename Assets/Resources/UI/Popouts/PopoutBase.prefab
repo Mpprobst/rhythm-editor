@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 100, y: 0}
+  m_SizeDelta: {x: 190, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2996170426154470316
 CanvasRenderer:
@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 744210320876327656}
   - component: {fileID: 874682747295629143}
   - component: {fileID: 6853816710390197321}
+  - component: {fileID: 1823685846708853018}
   m_Layer: 5
   m_Name: PopoutBase
   m_TagString: Untagged
@@ -247,6 +248,9 @@ MonoBehaviour:
   closeButton: {fileID: 1796006208754732429}
   content: {fileID: 7966481699118731333}
   canvasGroup: {fileID: 744210320876327656}
+  onClose:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!225 &744210320876327656
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -299,6 +303,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1823685846708853018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5415579742428469937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e315d082160ad43847172e0f9dbd5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rxForm: {fileID: 5503807234735950114}
+  parentCanvas: {fileID: 0}
 --- !u!1 &5525337592711088633
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +616,7 @@ GameObject:
   - component: {fileID: 7177540996234043325}
   - component: {fileID: 8515490076687481638}
   - component: {fileID: 3101820849981287370}
+  - component: {fileID: 3253744258590556807}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -721,3 +740,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3253744258590556807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8935530634753798216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245dfcaad75caac46a2e46ef41e8a177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rxForm: {fileID: 5503807234735950114}

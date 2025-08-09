@@ -45,7 +45,7 @@ public class UIElementDataEditor : Editor
 
             string popoutName = $"UI/Popouts/{elementName_prop.stringValue}_Popout";
             Object popoutPrefab = Resources.Load<Object>(popoutName);
-            if (popoutPrefab == null && popoutPrefab_prop.objectReferenceValue)
+            if (popoutPrefab == null || popoutPrefab_prop.objectReferenceValue == null)
                 popoutPrefab = Resources.Load<Object>("UI/Popouts/PopoutBase");
             popoutPrefab_prop.objectReferenceValue = popoutPrefab; 
         }

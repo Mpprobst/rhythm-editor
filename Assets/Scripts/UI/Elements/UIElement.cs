@@ -15,8 +15,7 @@ public interface IUIStyle
 // IMPORTANT NOTE: all fields must be public or exposed to the inspector in some way for them to be saved from the LayoutGenerator->this.SetInfo()
 public abstract class UIElement : MonoBehaviour, IUIStyle
 {
-    public string Name { get { return elementName; } }
-    protected string elementName = string.Empty;
+    public string ElementName;
     public abstract void SetInfo(UIElementData data, LayoutAlignment alignment, ScreenSide screenSide);
     public abstract void SetColors(UIStyleData style);
     public abstract void SetStyle(UIStyleData style);

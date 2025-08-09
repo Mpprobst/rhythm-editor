@@ -85,7 +85,7 @@ public class ElementInputOptionData
     [OptionType(OptionType.NUMBER)] public float min;
     [OptionType(OptionType.NUMBER)] public float max;
     [OptionType(OptionType.NUMBER)] public float defaultValue;
-    [OptionType(OptionType.NUMBER)] public float scale;
+    [OptionType(OptionType.NUMBER)] public float scale = 1;
     [OptionType(OptionType.NUMBER)] public bool useSlider;
     [OptionType(OptionType.NUMBER)] public bool roundToInt;
 
@@ -94,6 +94,31 @@ public class ElementInputOptionData
 
     // file only
     [OptionType(OptionType.FILE)] public FileType fileType;
+
+    public ElementInputOptionData(OptionType _optionType, string _optionName)
+    {
+        optionType = _optionType;
+        optionName = _optionName;
+        optionPrefab = (GameObject)Resources.Load<UnityEngine.Object>("UI/Options/PopoutOption_" + Utils.ToHumanReadable(optionType));
+    }
+
+    public ElementInputOptionData(OptionType _optionType, string _optionName, float _min, float _max, bool _slider)
+    {
+        optionType = _optionType;
+        optionName = _optionName;
+        optionPrefab = (GameObject)Resources.Load<UnityEngine.Object>("UI/Options/PopoutOption_" + Utils.ToHumanReadable(optionType));
+        min = _min;
+        max = _max;
+        useSlider = _slider;
+    }
+
+    public ElementInputOptionData(OptionType _optionType, string _optionName, FileType _fileType)
+    {
+        optionType = _optionType;
+        optionName = _optionName;
+        optionPrefab = (GameObject)Resources.Load<UnityEngine.Object>("UI/Options/PopoutOption_" + Utils.ToHumanReadable(optionType));
+        fileType = _fileType;
+    }
 }
 
 [Serializable]

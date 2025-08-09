@@ -13,7 +13,7 @@ public class UIElement_Label : UIElement
 
     public override void SetInfo(UIElementData data, LayoutAlignment alignment, ScreenSide screenSide)
     {
-        elementName = data.elementName;
+        ElementName = data.elementName;
         // label and icon are in the same layout group.
         label.text = data.elementName;
         label.alignment = Utils.GetTextAlignmentOption(screenSide, alignment);

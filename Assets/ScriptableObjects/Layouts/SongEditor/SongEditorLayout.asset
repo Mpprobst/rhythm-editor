@@ -17,11 +17,13 @@ MonoBehaviour:
     alignment: 1
     buttonData:
     - {fileID: 11400000, guid: cad062082f142e140b46e4616e7b431d, type: 2}
+    - {fileID: 11400000, guid: 579cf7b3d29c399499720c976ce42237, type: 2}
     allowMultipleActiveButtons: 0
   secondaryGroupData:
   - groupName: Tracks
     alignment: 0
     buttonData:
+    - {fileID: 11400000, guid: 616d95a775015984fb890220fa3a85c4, type: 2}
     - {fileID: 11400000, guid: 229c5d5db24afc34faf7d52379fd2f87, type: 2}
     allowMultipleActiveButtons: 0
   subLayout: {fileID: 0}

@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -35,6 +36,31 @@ public static class Utils
     public static bool IsSubclass(Type sourceType, Type targetType)
     {
         return sourceType == targetType || sourceType.IsSubclassOf(targetType);
+    }
+
+    public static ScreenSide ScreenSideOfElement(RectTransform rxForm)
+    {
+        // whichever axis is closer to an extent we should use
+        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
+        Canvas canvas = rxForm.GetComponentInParent<Canvas>();
+        if (canvas)
+            screenSize = canvas.renderingDisplaySize;   // because this is how transforms determine their position
+
+        ScreenSide screenSide = ScreenSide.LEFT;
+        Vector2 posDiff = new Vector2(rxForm.position.x, rxForm.position.y) - screenSize / 2f;    // using center of screen because negative values clearly indicate our quadrant of screen
+        posDiff = new Vector2(posDiff.x / screenSize.x, posDiff.y / screenSize.y);  // scales so our comparison between axes is fair
+        if (Mathf.Abs(posDiff.x) < Mathf.Abs(posDiff.y))
+        {
+            // we are closer to a top or bottom
+            if (posDiff.y < 0) screenSide = ScreenSide.BOTTOM;
+            else screenSide = ScreenSide.TOP;
+        }
+        else
+        {
+            if (posDiff.x > 0)
+                screenSide = ScreenSide.RIGHT;
+        }
+        return screenSide;
     }
 
     // could do fancy math here to calculate the enum code for the alignment, but that code is very hard to read
@@ -89,20 +115,49 @@ public static class Utils
         string alignString = alignment.ToString();
         float x = 0;
         float y = 0;
-        if (alignString.Contains("Left"))
-            x = 0;
-        else if (alignString.Contains("Right"))
-            x = 1;
-        else if (alignString.Contains("Center"))
-            x = 0.5f;
 
         if (alignString.Contains("Bottom"))
             y = 0;
         else if (alignString.Contains("Top"))
             y = 1;
-        else if (alignString.Contains("Center"))
+        else
             y = 0.5f;
 
+        if (alignString.Contains("Left"))
+            x = 0;
+        else if (alignString.Contains("Right") && y == 0)   // checking y == 0 because it looks better to be flush to edges
+            x = 1;
+        else
+            x = 0.5f;
+
         return new Vector2(x, y);
+    }
+
+    public static Vector2[] GetRectCorners(RectTransform rxForm)
+    {
+        Vector2[] corners = new Vector2[4];
+
+        // it's all in the pivot
+        Vector2 pivot = rxForm.pivot;
+        
+        // need to apply the parent scale to this child becasue scale trickles down. another reason keeping scale as 1,1,1 is ideal
+        Canvas parentCanvas = rxForm.GetComponentInParent<Canvas>();
+        Vector2 size = Vector2.Scale(rxForm.rect.size, parentCanvas.transform.localScale);
+
+        // corners of the rect can be described same as the pivots. corner - pivot is the direction to the corner. scale that by the rect size and we have the extents of the rect 
+        Vector2 rectPos = new Vector2(rxForm.position.x, rxForm.position.y);    // this will be relative to the overall world
+        corners[0] = Vector2.Scale(Vector2.zero - pivot, size) + rectPos;
+        corners[1] = Vector2.Scale(Vector2.up - pivot, size) + rectPos;
+        corners[2] = Vector2.Scale(Vector2.one - pivot, size) + rectPos;
+        corners[3] = Vector2.Scale(Vector2.right - pivot, size) + rectPos;
+
+        return corners;
+    }
+
+    public static bool IsMouseInRect(Vector2 mousePos, RectTransform rxForm)
+    {
+        Vector2[] corners = GetRectCorners(rxForm);
+        Debug.Log($"{mousePos} ({corners[0].x}..{corners[3].x}) ({corners[0].y}..{corners[1].y})");
+        return mousePos.x > corners[0].x && mousePos.x < corners[2].x && mousePos.y < corners[1].y && mousePos.y > corners[3].y;
     }
 }

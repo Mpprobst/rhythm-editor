@@ -15,13 +15,14 @@ public class UIElement_Button : UIElement_Label
     protected bool isActive;
     public int id;
 
-    protected Color baseColor, highlightColor;
+    [Header("Colors")]
+    [SerializeField] protected Color baseColorBackground, highlightColorBackground;
+    [SerializeField] protected Color baseColorLabel, highlightColorLabel;
 
     public override void SetInfo(UIElementData data, LayoutAlignment alignment, ScreenSide screenSide)
     {
         base.SetInfo(data, alignment, screenSide);
         isToggle = data.isToggle;   
-        button.onClick.AddListener(OnClick);
     }
 
     public virtual void OnClick()
@@ -42,15 +43,19 @@ public class UIElement_Button : UIElement_Label
     public virtual void SetActiveNoNotify(bool isOn)
     {
         isActive = isOn;
-        button.image.color = isActive ? highlightColor : baseColor;
+        button.image.color = isActive ? highlightColorBackground : baseColorBackground;
+        label.color = isActive ? highlightColorLabel : baseColorLabel;
+        icon.color = isActive ? highlightColorLabel : baseColorLabel;
     }
 
     public override void SetColors(UIStyleData style)
     {
         base.SetColors(style);
         button.image.color = style.backgroundColor;
-        baseColor = style.backgroundColor;
-        highlightColor = style.backgroundColor_highlight;
+        baseColorBackground = style.backgroundColor;
+        highlightColorBackground = style.backgroundColor_highlight;
+        baseColorLabel = style.textColor_primary;
+        highlightColorLabel = style.iconColor_highlight;
     }
 
 

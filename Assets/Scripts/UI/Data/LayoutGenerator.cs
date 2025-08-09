@@ -7,6 +7,7 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Drawing;
+using System.Xml.Linq;
 
 public static class LayoutGenerator 
 {
@@ -45,28 +46,8 @@ public static class LayoutGenerator
     private static void SpawnLayoutGroup(LayoutGroupData[] groupData, Transform ribbon, UILayout layout, ref List<UIElement_Popout> existingPopouts)
     {
         List<UIElement> existingElements = ribbon.GetComponentsInChildren<UIElement>().ToList();
-        ScreenSide screenSide = ScreenSide.LEFT;    // figure this out by screen position
         RectTransform ribbonRect = ribbon.GetComponent<RectTransform>();
-        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
-        // TODO: involve the canvas scaler
-        Canvas canvas = layout.GetComponentInParent<Canvas>();
-        if (canvas)
-            screenSize = canvas.renderingDisplaySize;   // because this is how transforms determine their position
-
-        // whichever axis is closer to an extent we should use
-        Vector2 posDiff = new Vector2(ribbonRect.position.x, ribbonRect.position.y) - screenSize/2f;    // using center of screen because negative values clearly indicate our quadrant of screen
-        posDiff = new Vector2(posDiff.x / screenSize.x, posDiff.y / screenSize.y);  // scales so our comparison between axes is fair
-        if (Mathf.Abs(posDiff.x) < Mathf.Abs(posDiff.y))
-        {
-            // we are closer to a top or bottom
-            if (posDiff.y < 0) screenSide = ScreenSide.BOTTOM;
-            else screenSide = ScreenSide.TOP;
-        }
-        else 
-        {
-            if (posDiff.x > 0)    
-                screenSide = ScreenSide.RIGHT;
-        }
+        ScreenSide screenSide = Utils.ScreenSideOfElement(ribbonRect);
 
         // spawn all the things
         for (int i = 0; i < groupData.Length; i++)
@@ -77,7 +58,8 @@ public static class LayoutGenerator
             if (buttonGroups.Length > 0)
             {
                 int groupIdx = Mathf.Min(buttonGroups.Length - 1, (int)alignment);
-                container = ribbon.GetChild(groupIdx).transform;
+                //Debug.Log($"{container.name} has groupidx {groupIdx}");
+                container = buttonGroups[groupIdx].transform;
             }
             UIButtonGroup buttonGroup = container.GetComponent<UIButtonGroup>();
             if (buttonGroup)
@@ -87,51 +69,14 @@ public static class LayoutGenerator
             for (int j = 0; j < groupData[i].buttonData.Length; j++)
             {
                 UIElementData elementData = groupData[i].buttonData[j];
-                Type elementType = Type.GetType($"UIElement_{Utils.ToHumanReadable(elementData.elementType)}");
-                UIElement element = GetChildElement(container, elementData.elementName, elementType);
-
-                if (element == null)
-                {
-                    // spawn the prefab
-                    GameObject elementObj = (GameObject)PrefabUtility.InstantiatePrefab(elementData.elementPrefab, container);
-                    element = elementObj.GetComponent<UIElement>();
-                }
-
+                UIElement element = SpawnElement(elementData, container, layout, alignment, screenSide);
+                
                 if (existingElements.Contains(element))
                     existingElements.Remove(element);
 
-                // update the element
-                element.SetInfo(elementData, alignment, screenSide);
-                element.transform.SetSiblingIndex(i);
-                element.name = $"{elementType.Name}_{elementData.elementName}";
-
-                // if a popout, we need to find it or spawn it
                 if (elementData.elementType == UIElementType.POPOUT)
-                {
-                    UIElement_PopoutButton popoutButton = element as UIElement_PopoutButton;
-                    SpawnPopout(elementData, layout.popoutContainer, ref popoutButton.popout);
-                    if (existingPopouts.Contains(popoutButton.popout))
-                        existingPopouts.Remove(popoutButton.popout);
-                    popoutButton.popout.onClose = new UnityEngine.Events.UnityEvent();
-                    //popoutButton.popout.onClose.AddListener(delegate { popoutButton.SetActiveNoNotify(false); });   // no notify because the popout already knows it is being closed
-
-                    RectTransform popoutRXForm = popoutButton.popout.GetComponent<RectTransform>();
-                    Vector2 anchorPivot = Utils.GetAnchorFromAlignment(screenSide, alignment);
-
-                    popoutRXForm.SetParent(popoutButton.transform);
-                    popoutRXForm.anchorMin = anchorPivot;
-                    popoutRXForm.anchorMax = anchorPivot;
-                    popoutRXForm.pivot = anchorPivot;
-
-                    // this is getting pretty close, might need to force the conetent size fitter to update first
-                    RectTransform buttonRect = popoutButton.GetComponent<RectTransform>();
-                    Vector2 popoutPos = Vector2.Scale(buttonRect.rect.size, buttonRect.pivot);// + popoutRXForm.rect.size / 2f;
-
-                    popoutRXForm.anchoredPosition = popoutPos;
-
-                    popoutRXForm.SetParent(layout.popoutContainer);
-                    popoutRXForm.localScale = Vector3.one;
-                }
+                    if (existingPopouts.Contains((element as UIElement_PopoutButton).popout))
+                        existingPopouts.Remove((element as UIElement_PopoutButton).popout);
             }
 
             // delete old popouts
@@ -147,7 +92,38 @@ public static class LayoutGenerator
         }
     }
 
-    private static void SpawnPopout(UIElementData data, Transform popoutContainer, ref UIElement_Popout popout)
+    public static UIElement SpawnElement(UIElementData elementData, Transform container, UILayout layout, LayoutAlignment alignment, ScreenSide screenSide)
+    {
+        Type elementType = Type.GetType($"UIElement_{Utils.ToHumanReadable(elementData.elementType)}");
+        UIElement element = layout.GetElement(elementData.elementName, elementType, container);
+
+        if (element == null)
+        {
+            // spawn the prefab
+            GameObject elementObj = (GameObject)PrefabUtility.InstantiatePrefab(elementData.elementPrefab, container);
+            element = elementObj.GetComponent<UIElement>();
+        }
+
+        // update the element
+        element.SetInfo(elementData, alignment, screenSide);
+        element.transform.SetAsLastSibling();
+        element.name = $"{elementType.Name}_{elementData.elementName}";
+
+        // if a popout, we need to find it or spawn it
+        if (elementData.elementType == UIElementType.POPOUT)
+        {
+            UIElement_PopoutButton popoutButton = element as UIElement_PopoutButton;
+            SpawnPopout(elementData, layout.popoutContainer, ref popoutButton.popout);
+
+            popoutButton.popout.onClose = new UnityEngine.Events.UnityEvent();
+            //popoutButton.popout.onClose.AddListener(delegate { popoutButton.SetActiveNoNotify(false); });   // no notify because the popout already knows it is being closed
+
+            popoutButton.SetPopoutPos();
+        }
+        return element;
+    }
+
+    public static void SpawnPopout(UIElementData data, Transform popoutContainer, ref UIElement_Popout popout)
     {
         if (popout == null)
         {
@@ -206,16 +182,5 @@ public static class LayoutGenerator
         }
         option.SetInfo(optionData);
         option.SetOptionHeight();
-    }
-
-    private static UIElement GetChildElement(Transform transform, string name, Type type)
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            UIElement element = transform.GetChild(i).GetComponent<UIElement>();
-            if (element && element.GetType() == type && element.Name.Contains(name))
-                return element;
-        }
-        return null;
     }
 }

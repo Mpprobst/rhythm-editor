@@ -17,7 +17,7 @@ public class LayoutData : ScriptableObject
 
 
 public enum LayoutAlignment { LEFT, CENTER, RIGHT };
-public enum ScreenSide { LEFT, RIGHT, TOP, BOTTOM };    // Determined by the primary or secondary group
+public enum ScreenSide { LEFT, RIGHT, TOP, BOTTOM };    // Determined by the primary or secondary group probably refactor to be a screen quadrant
 
 [Serializable]
 public class LayoutGroupData

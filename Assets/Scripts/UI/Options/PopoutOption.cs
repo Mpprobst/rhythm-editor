@@ -91,6 +91,7 @@ public abstract class PopoutOption : MonoBehaviour, IUIStyle
     {
         //value.ConvertTo(valueType);
         value = val;
+        Debug.Log($"setting {optionName} value to " + value);
     }
     
     public virtual void SetColors(UIStyleData style)

@@ -1,30 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 using Text = TMPro.TextMeshProUGUI;
 
-public class Note : MonoBehaviour
+public class Note : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] protected Image image;
-    [SerializeField] protected Sprite[] noteIcons;
 
-    public void SetStyle(int iconIdx)
+    public UnityEvent<Note> onClick = new UnityEvent<Note>();
+
+    public void OnPointerClick(PointerEventData eventData)
     {
-        SetStyle(iconIdx, image.color);
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            onClick.Invoke(this);
+        }
+    }
+
+    public void SetStyle(Sprite sprite)
+    {
+        SetStyle(sprite, image.color);
     }
 
     public void SetStyle(Color color)
     {
         SetStyle(image.sprite, color);
-    }
-
-    public void SetStyle(int iconIdx, Color color)
-    {
-        Sprite sprite = null;
-        if (noteIcons.Length > 0) sprite = noteIcons[iconIdx % noteIcons.Length];
-        SetStyle(sprite, color);
     }
 
     public void SetStyle(Sprite sprite, Color color)

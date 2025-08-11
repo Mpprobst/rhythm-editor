@@ -23,6 +23,7 @@ public class PopoutOption_Text : PopoutOption
     protected override void Awake()
     {
         base.Awake();
+        value  = "";
         inputField.onValueChanged.AddListener(SetValue);
     }
 
@@ -34,10 +35,9 @@ public class PopoutOption_Text : PopoutOption
         return h;
     }
 
-    // Action doesn't really have a value, but the other inhereting classes will so 
     public string GetValue()
     {
-        return GetValue<string>();
+        return value.ToString();
     }
 
     public virtual void SetValue(string val)

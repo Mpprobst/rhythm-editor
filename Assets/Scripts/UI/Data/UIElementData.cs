@@ -126,6 +126,12 @@ public class DropdownOptionData
 {
     public string optionName;
     public Sprite optionIcon;
+
+    public DropdownOptionData(string _name, Sprite _icon)
+    {
+        optionName = _name;
+        optionIcon = _icon;
+    }
 }
 
 public enum FileType { MP3, IMAGE, TRACK }

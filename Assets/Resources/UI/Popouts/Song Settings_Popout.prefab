@@ -184,6 +184,22 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4474451616825536997, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_Value
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474451616825536997, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_MaxValue
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474451616825536997, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_MinValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474451616825536997, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5515901925037056207, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_text
       value: 
@@ -500,7 +516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7863808279994453946, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
       propertyPath: m_AspectRatio
-      value: 0.001
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8230930129616880811, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
       propertyPath: m_AnchorMax.y

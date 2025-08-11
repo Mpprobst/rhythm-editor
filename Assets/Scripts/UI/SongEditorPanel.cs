@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
+using System.Linq;
 
 
 public class SongEditorPanel : UILayout
@@ -22,6 +23,7 @@ public class SongEditorPanel : UILayout
     [SerializeField] private float minNoteWidth = 10f;
     [SerializeField] private float defaultNoteWidth = 50f;
     [SerializeField] private int notePrecision = 4;
+    [SerializeField] private Sprite[] noteSprites;
 
     [Header("Components")]
     [SerializeField] private AudioSource songSource;
@@ -96,10 +98,18 @@ public class SongEditorPanel : UILayout
         List<ElementInputOptionData> options = new List<ElementInputOptionData>();
         ElementInputOptionData trackNameOptionData = new ElementInputOptionData(OptionType.TEXT, "Track Name");
         ElementInputOptionData noteIconData = new ElementInputOptionData(OptionType.DROPDOWN, "Note Image", FileType.IMAGE);
+        noteIconData.options = new DropdownOptionData[noteSprites.Length];
+        for (int i = 0; i <  noteSprites.Length; i++)
+        {
+            noteIconData.options[i] = new DropdownOptionData(i.ToString(), noteSprites[i]);
+        }
+
         ElementInputOptionData keybindData = new ElementInputOptionData(OptionType.ACTION, "Keybind");
+        ElementInputOptionData colorData = new ElementInputOptionData(OptionType.ACTION, "Color");
         options.Add(trackNameOptionData);
         options.Add(noteIconData);
         options.Add(keybindData);
+        options.Add(colorData);
         newTrackData.popoutOptions = options.ToArray();
         // default icon would be cool
         

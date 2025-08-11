@@ -19,13 +19,14 @@ public class PopoutOption_Toggle : PopoutOption
 
     protected override void Awake()
     {
-        base.Awake(); 
+        base.Awake();
+        value = false;
         toggle.onValueChange.AddListener(SetValue);
     }
 
     public bool GetValue()
     {
-        return GetValue<bool>();
+        return (bool)value;
     }
 
     public void SetValue(bool val)

@@ -28,9 +28,36 @@ public class UIElement_Popout : MonoBehaviour, IUIStyle
         //Close();
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         Close();
+    }
+
+    // aligns this popout relative to a UI element and its screen position
+    public void SetPositionRelative(RectTransform relativeRect)
+    {
+        ScreenSide screenSide = Utils.ScreenSideOfElement(relativeRect);
+        RectTransform popoutRXForm = GetComponent<RectTransform>();
+        Vector2 anchorPivot = Vector2.one;// Utils.GetAnchorFromAlignment(screenSide, LayoutAlignment.CENTER);
+        if (screenSide == ScreenSide.LEFT) anchorPivot.y = 0;
+        else if (screenSide == ScreenSide.RIGHT) anchorPivot.y = 1;
+        else if (screenSide == ScreenSide.BOTTOM) anchorPivot.x = 0;
+        else anchorPivot.x = 1;
+
+        //Transform popoutParent = popoutRXForm.parent;
+        //popoutRXForm.SetParent(relativeRect);
+        popoutRXForm.anchorMin = anchorPivot;
+        popoutRXForm.anchorMax = anchorPivot;
+        popoutRXForm.pivot = anchorPivot;
+
+        // pretty much puts the popout corner touching the corner of the button while being flush to its edge
+        Vector2 popoutPos = Vector2.Scale(relativeRect.rect.size , anchorPivot-relativeRect.pivot) + new Vector2(relativeRect.position.x, relativeRect.position.y);
+        popoutPos += Vector2.Scale(relativeRect.pivot - anchorPivot, popoutRXForm.rect.size);
+        Debug.Log("popoutPos " +popoutPos);
+        popoutRXForm.position = popoutPos;
+
+        //popoutRXForm.SetParent(popoutParent);
+        popoutRXForm.localScale = Vector3.one;
     }
 
     // should be openable from several sources
@@ -52,18 +79,15 @@ public class UIElement_Popout : MonoBehaviour, IUIStyle
         canvasGroup.blocksRaycasts = false;
     }
 
+    // TODO: a set position function relative to a general rect. not controlled by the popout button
+
     protected void CloseInternal()
     {
         if (onClose != null) onClose.Invoke();
         Close();
     }
 
-    public PopoutOption GetOption<T>(string optionName)
-    {
-        return GetOption(optionName, typeof(T));
-    }
-
-    public T GetPopout<T>(string optionName)
+    public T GetOption<T>(string optionName)
     {
         PopoutOption op = GetOption(optionName, typeof(T));
 

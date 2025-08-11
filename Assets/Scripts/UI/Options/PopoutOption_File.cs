@@ -82,6 +82,7 @@ public class PopoutOption_File : PopoutOption_Action
 
         if (onFileSelected != null)
             onFileSelected.Invoke(paths[0]);
+        SetValue(paths[0]); 
     }    
 
     public override void SetColors(UIStyleData style)

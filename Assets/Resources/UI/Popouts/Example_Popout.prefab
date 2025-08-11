@@ -88,6 +88,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Default Text
       objectReference: {fileID: 0}
+    - target: {fileID: 4474451616825536997, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_Value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474451616825536997, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_MaxValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474451616825536997, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5515901925037056207, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_text
       value: 
@@ -935,6 +947,14 @@ PrefabInstance:
     - target: {fileID: 3438910337886331782, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_text
       value: Default Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474451616825536997, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474451616825536997, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_MaxValue
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5515901925037056207, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_text

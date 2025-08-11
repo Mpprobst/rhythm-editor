@@ -89,4 +89,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 6130509162853822274}
-  noteIcons: []
+  noteIcons:
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []

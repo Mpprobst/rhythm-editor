@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIElement_Button
       objectReference: {fileID: 0}
+    - target: {fileID: 2950672717843446095, guid: 98e6ff0474a9fbf4eb8f7fa0c91e953e, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950672717843446095, guid: 98e6ff0474a9fbf4eb8f7fa0c91e953e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3435155668821868163, guid: 98e6ff0474a9fbf4eb8f7fa0c91e953e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -217,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745ae6f113601364a8219cf7a84b1997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ElementName: 
   label: {fileID: 752804129433215993}
   icon: {fileID: 6993927102220912195}
   element: {fileID: 2036133822950025814}
@@ -228,7 +237,12 @@ MonoBehaviour:
   onSelect:
     m_PersistentCalls:
       m_Calls: []
+  isToggle: 0
   id: 0
+  baseColorBackground: {r: 0, g: 0, b: 0, a: 0}
+  highlightColorBackground: {r: 0, g: 0, b: 0, a: 0}
+  baseColorLabel: {r: 0, g: 0, b: 0, a: 0}
+  highlightColorLabel: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1922411041506542010
 MonoBehaviour:
   m_ObjectHideFlags: 0

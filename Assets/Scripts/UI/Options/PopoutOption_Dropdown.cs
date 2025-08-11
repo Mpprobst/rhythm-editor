@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using Dropdown = TMPro.TMP_Dropdown;
 using Text = TMPro.TextMeshProUGUI;
+using Unity.VisualScripting;
 
 public class PopoutOption_Dropdown : PopoutOption
 {
@@ -24,15 +25,16 @@ public class PopoutOption_Dropdown : PopoutOption
         }
         dropdown.options = options;
     }
-
+    
     public int GetValue()
     {
-        return dropdown.value;
+        return (int)value;
     }
 
     protected override void Awake()
     {
         base.Awake();
+        value = 0;
         dropdown.onValueChanged.AddListener(SetValue);
     }
 
@@ -46,6 +48,7 @@ public class PopoutOption_Dropdown : PopoutOption
     public void SetValue(int val)
     {
         base.SetValue(val);
+        dropdown.captionImage.GetComponent<NullSpriteChecker>()?.CheckSprite();
         onValueChanged.Invoke(val);
         onStringValueChanged.Invoke(dropdown.options[val].text);
     }
@@ -56,7 +59,7 @@ public class PopoutOption_Dropdown : PopoutOption
         {
             if (string.Compare(dropdown.options[i].text, val, true) > 0)
             {
-                SetValue(i);
+                SetValueNoNotify(i);
                 break;
             }
 
@@ -73,6 +76,12 @@ public class PopoutOption_Dropdown : PopoutOption
     {
         if (val < 0 || val >= dropdown.options.Count) return "";
         return dropdown.options[val].text;
+    }
+
+    public Sprite GetOptionImage(int val)
+    {
+        if (val < 0 || val >= dropdown.options.Count) return null;
+        return dropdown.options[val].image;
     }
 
     public override void SetColors(UIStyleData style)

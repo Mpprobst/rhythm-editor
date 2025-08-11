@@ -14,20 +14,21 @@ public class Track : MonoBehaviour, IUIStyle, IPointerClickHandler
 {
     [SerializeField] private RectTransform rxForm;
     [SerializeField] private GameObject notePrefab;
+    [SerializeField] private Sprite[] noteSprites;
 
     // track popout options
     [HideInInspector] public UIElement_PopoutButton trackPopout;
     protected PopoutOption_Text trackNameOption;
     protected PopoutOption_Dropdown iconFileOption;
-    protected PopoutOption_Action keybindOption;  // todo: special where we listen for input. might need to be a different option type.
-    // TODO: color option
+    protected PopoutOption_Action keybindOption, colorOption; 
 
     // vars
     public float roundToVal = 10;
     private bool recordingInput;
     private string keybind; // TODO: may need to store an InputSystem variable;
     private string keyPath;                    // I like the idea of saving paths to the input then just looking through active devices for the correct path.
-                            // // maybe that can be done at set time instead of every frame
+                                               // // maybe that can be done at set time instead of every frame
+    private Color keyColor;
 
     private List<Note> notes = new List<Note>();
 
@@ -43,6 +44,9 @@ public class Track : MonoBehaviour, IUIStyle, IPointerClickHandler
 
         keybindOption = (PopoutOption_Action)popoutButton.popout.GetOption<PopoutOption_Action>("Keybind");
         keybindOption.onActivate.AddListener(StartRecordingKeybind);
+
+        colorOption = (PopoutOption_Action)popoutButton.popout.GetOption<PopoutOption_Action>("Color");
+        colorOption.onActivate.AddListener(StartRecordingColor);
 
         InputSystem.onAnyButtonPress.Call(currentAction =>
         {
@@ -73,20 +77,41 @@ public class Track : MonoBehaviour, IUIStyle, IPointerClickHandler
     {
         foreach (var note in notes)
         {
-            note.SetStyle(option);
+            note.SetStyle(iconFileOption.GetOptionImage(option));
         }
     }
 
+    // TODO: prevent space and enter from activating the UI buttons
     private void StartRecordingKeybind()
     {
         recordingInput = true;
         keybindOption.SetName("...");
     }
 
-    private void SetKeybind(string key)
+    private void StartRecordingColor()
     {
-        // not sure if I need to apply it to notes
+        ColorPopout.Instance.onColorChange.AddListener(SetKeyColor);
+        ColorPopout.Instance.onClose.AddListener(StopSettingKeyColor);
+        ColorPopout.Instance.SetColorNoNotify(keyColor);
+        ColorPopout.Instance.SetPositionRelative(trackPopout.GetComponent<RectTransform>());  
+        ColorPopout.Instance.Open();
+    }
 
+    private void SetKeyColor(Color val)
+    {
+        Debug.Log("Set Color " + val);
+        keyColor = val;
+        trackPopout.GetComponent<Button>().image.color = keyColor;
+        foreach (var note in notes)
+        {
+            note.SetStyle(val);
+        }
+    }
+
+    private void StopSettingKeyColor()
+    {
+        ColorPopout.Instance.onColorChange.RemoveListener(SetKeyColor);
+        ColorPopout.Instance.onClose.RemoveListener(StopSettingKeyColor);
     }
 
     #endregion
@@ -131,13 +156,19 @@ public class Track : MonoBehaviour, IUIStyle, IPointerClickHandler
         //Debug.Log($"eventPos: {eventData.position} mouse pos {Mouse.current.position.value} anchor pos {relativePos}");
         noteRxForm.sizeDelta = new Vector2(roundToVal, rxForm.rect.height);
         Note note = noteObj.GetComponent<Note>();
-        note.SetStyle(iconFileOption.GetValue(), Color.white);
+        note.SetStyle(iconFileOption.GetOptionImage(iconFileOption.GetValue()), keyColor);
+        note.onClick.AddListener(OnNoteRemoved);
 
         // TODO: sort notes by x val
         notes.Add(noteObj.GetComponent<Note>());
+        notes.Sort((x,y) => x.transform.position.x < y.transform.position.x ? 1 : -1);
+    }
 
-        // apply the style to the note
-        // set style from the popout
+    public void OnNoteRemoved(Note note)
+    {
+        // find it in the list and 
+        notes.Remove(note);
+        Destroy(note.gameObject);
     }
 
     public void SetColors(UIStyleData style)

@@ -33,6 +33,7 @@ public class PopoutOption_Number : PopoutOption_Text
     protected override void Awake()
     {
         base.Awake();
+        value = slider.value;   // init so we cant return ot null
         slider.onValueChanged.AddListener(SetValue);
     }
 
@@ -46,9 +47,10 @@ public class PopoutOption_Number : PopoutOption_Text
         return h;
     }
 
+    // TODO: not working
     new public float GetValue()
     {
-        return GetValue<float>() * scale;
+        return (float)value * scale;
     }
 
     public override void SetValue(string value)
@@ -56,24 +58,25 @@ public class PopoutOption_Number : PopoutOption_Text
         SetValue(float.Parse(value));
     }
 
-    public override void SetValueNoNotify(string value)
-    {
-        SetValueNoNotify(float.Parse(value));
-    }
-
     public void SetValue(float val)
     {
+        Debug.Log("set num " + val);
         SetValueNoNotify(val / scale); 
         onNumberChanged.Invoke(val);
     }
 
+    public override void SetValueNoNotify(string value)
+    {
+        base.SetValueNoNotify(value);
+        SetValueNoNotify(float.Parse(value));
+    }
+
     public void SetValueNoNotify(float val)
     {
+        base.SetValueNoNotify(val.ToString());
         if (slider)
             slider.SetValueWithoutNotify(val);
-        if (Application.isPlaying)  // causing an issue when generating
-            inputField.SetTextWithoutNotify(val.ToString());
-        base.SetValue(val);
+        value = val;
     }
 
     public override void SetColors(UIStyleData style)

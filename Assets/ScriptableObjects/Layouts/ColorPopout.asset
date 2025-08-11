@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f63a28fb97e0e44ea6aac28dc33f6a7, type: 3}
+  m_Name: ColorPopout
+  m_EditorClassIdentifier: 
+  elementType: 2
+  elementPrefab: {fileID: 4429121943696435980, guid: f90c425644a5f9e49911757c158e4fa9, type: 3}
+  elementName: Color
+  description: Reusable Color menu
+  icon: {fileID: 0}
+  stacking: 2
+  shortcut: 
+  isToggle: 1
+  popoutOptions:
+  - optionType: 3
+    optionName: Red
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 8303171234664761828, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+    placeholder: 
+    min: 0
+    max: 1
+    defaultValue: 1
+    scale: 1
+    useSlider: 1
+    roundToInt: 0
+    options: []
+    fileType: 0
+  - optionType: 3
+    optionName: Green
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 8303171234664761828, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+    placeholder: 
+    min: 0
+    max: 1
+    defaultValue: 1
+    scale: 1
+    useSlider: 1
+    roundToInt: 0
+    options: []
+    fileType: 0
+  - optionType: 3
+    optionName: Blue
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 8303171234664761828, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+    placeholder: 
+    min: 0
+    max: 1
+    defaultValue: 1
+    scale: 1
+    useSlider: 1
+    roundToInt: 0
+    options: []
+    fileType: 0
+  popoutPrefab: {fileID: 579862076191786699, guid: ed4d1f382602aa844b98b7164aea520f, type: 3}

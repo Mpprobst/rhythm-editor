@@ -29,6 +29,7 @@ MonoBehaviour:
     alignment: 0
     buttonData:
     - {fileID: 11400000, guid: 3cf6f559d1e2de241905e872c792c712, type: 2}
+    - {fileID: 11400000, guid: 3436ce065df0cbd49803d2e2945f9582, type: 2}
     allowMultipleActiveButtons: 0
   subLayout: {fileID: 11400000, guid: 7bc014ec3fd6e9543a70e9e71cd67ddf, type: 2}
   layoutPrefab: {fileID: 0}

@@ -13,19 +13,19 @@ public class ExamplePopout : UIElement_Popout
 
     protected void Start()
     {
-        actionOption = GetPopout<PopoutOption_Action>("Action");
+        actionOption = GetOption<PopoutOption_Action>("Action");
         actionOption.onActivate.AddListener(OnAction);
         
-        toggleOption = GetPopout<PopoutOption_Toggle>("Toggle");
+        toggleOption = GetOption<PopoutOption_Toggle>("Toggle");
         toggleOption.onValueChange.AddListener(OnToggle);
 
-        textOption = GetPopout<PopoutOption_Text>("Text");
+        textOption = GetOption<PopoutOption_Text>("Text");
         textOption.onValueEnter.AddListener(OnText);
 
-        numberOption = GetPopout<PopoutOption_Number>("Integer");
+        numberOption = GetOption<PopoutOption_Number>("Integer");
         numberOption.onNumberChanged.AddListener(OnInteger);
 
-        dropdownOption = GetPopout<PopoutOption_Dropdown>("Dropdown");
+        dropdownOption = GetOption<PopoutOption_Dropdown>("Dropdown");
         dropdownOption.onValueChanged.AddListener(OnDropdown);
     }
 

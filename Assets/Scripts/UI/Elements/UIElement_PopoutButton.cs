@@ -21,8 +21,7 @@ public class UIElement_PopoutButton : UIElement_Button
         {
             if (firstOpen)
             {
-                firstOpen = false;
-                SetPopoutPos();
+                popout.SetPositionRelative(GetComponent<RectTransform>());
             }
             popout.onClose.RemoveListener(ClosePopout);
             popout.onClose.AddListener(ClosePopout);
@@ -43,29 +42,7 @@ public class UIElement_PopoutButton : UIElement_Button
 
     public void SetPopoutPos()
     {
-        ScreenSide screenSide = Utils.ScreenSideOfElement(GetComponent<RectTransform>());
-        RectTransform popoutRXForm = popout.GetComponent<RectTransform>();
-        Vector2 anchorPivot = Vector2.one;// Utils.GetAnchorFromAlignment(screenSide, LayoutAlignment.CENTER);
-        if (screenSide == ScreenSide.LEFT) anchorPivot.y = 0;
-        else if (screenSide == ScreenSide.RIGHT) anchorPivot.y = 1;
-        else if (screenSide == ScreenSide.BOTTOM) anchorPivot.x = 0;
-        else anchorPivot.x = 1;
-
-        Transform popoutParent = popoutRXForm.parent;
-        popoutRXForm.SetParent(transform);
-        popoutRXForm.anchorMin = anchorPivot;
-        popoutRXForm.anchorMax = anchorPivot;
-        popoutRXForm.pivot = anchorPivot;
-
-        // pretty much puts the popout corner touching the corner of the button while being flush to its edge
-        RectTransform buttonRect = GetComponent<RectTransform>();
-        Vector2 popoutPos = Vector2.Scale(buttonRect.rect.size, -anchorPivot);
-        popoutPos += Vector2.Scale(anchorPivot - Vector2.up, popoutRXForm.rect.size);
-
-        popoutRXForm.anchoredPosition = popoutPos;
-
-        popoutRXForm.SetParent(popoutParent);
-        popoutRXForm.localScale = Vector3.one;
+        popout.SetPositionRelative(GetComponent<RectTransform>());
     }
 
     public override void SetColors(UIStyleData style)

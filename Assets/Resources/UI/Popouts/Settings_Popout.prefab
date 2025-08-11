@@ -24,6 +24,18 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4389550979306919835, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.691
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389550979306919835, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389550979306919835, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.691
+      objectReference: {fileID: 0}
     - target: {fileID: 5515901925037056207, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_text
       value: 
@@ -112,6 +124,10 @@ PrefabInstance:
       propertyPath: optionName
       value: Nimber
       objectReference: {fileID: 0}
+    - target: {fileID: 6880779800813919586, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6995831023177163810, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -127,6 +143,14 @@ PrefabInstance:
     - target: {fileID: 8303171234664761828, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_Name
       value: PopoutOption_Number_Nimber
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548785728677093562, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.691
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548785728677093562, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8776251057603235200, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_AnchorMax.y

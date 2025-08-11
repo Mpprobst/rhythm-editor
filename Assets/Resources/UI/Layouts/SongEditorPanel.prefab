@@ -407,6 +407,8 @@ MonoBehaviour:
   minNoteWidth: 10
   defaultNoteWidth: 50
   notePrecision: 4
+  noteSprites:
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   songSource: {fileID: 0}
 --- !u!1 &2541241573667037315
 GameObject:
@@ -1369,27 +1371,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 708296005101999026, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 708296005101999026, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 708296005101999026, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 61
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 708296005101999026, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 708296005101999026, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 30.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 708296005101999026, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 752804129433215993, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_text

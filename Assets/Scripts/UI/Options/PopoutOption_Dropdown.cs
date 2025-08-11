@@ -25,6 +25,11 @@ public class PopoutOption_Dropdown : PopoutOption
         dropdown.options = options;
     }
 
+    public int GetValue()
+    {
+        return dropdown.value;
+    }
+
     protected override void Awake()
     {
         base.Awake();

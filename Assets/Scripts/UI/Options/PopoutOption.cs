@@ -38,6 +38,11 @@ public abstract class PopoutOption : MonoBehaviour, IUIStyle
         }
     }
 
+    public virtual void SetName(string val)
+    {
+        label.text = val;
+    }
+
     protected virtual void Awake()
     {
         // must setup on value change events in awake (or in inspector but this feels better to me

@@ -50,6 +50,11 @@ public class UIElement_Label : UIElement
         }
     }
 
+    public virtual void SetName(string val)
+    {
+        label.text = val;
+    }
+
     public override void SetColors(UIStyleData style)
     {
         label.color = style.textColor_primary;

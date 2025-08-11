@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Globalization;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
@@ -133,6 +134,12 @@ public static class Utils
         return new Vector2(x, y);
     }
 
+    // gets the corner position of a rect relative to its anchored position. Good for when elements are in a layout group and you want the position relative to its top (or other aligned side)
+    public static Vector2 RectCornerLocalPosition(RectTransform rxForm, Vector2 corner)
+    {
+        return Vector2.Scale(rxForm.anchoredPosition, corner - rxForm.pivot);
+    }
+
     public static Vector2[] GetRectCorners(RectTransform rxForm)
     {
         Vector2[] corners = new Vector2[4];
@@ -154,10 +161,17 @@ public static class Utils
         return corners;
     }
 
+    public static Vector2 MousePositionInRect(RectTransform rxForm, Vector2 mousePos)
+    {
+        // based on a mouse position on the screen, get where that hit on the rxForm\
+        return Vector2.zero;
+    }
+
     public static bool IsMouseInRect(Vector2 mousePos, RectTransform rxForm)
     {
         Vector2[] corners = GetRectCorners(rxForm);
-        Debug.Log($"{mousePos} ({corners[0].x}..{corners[3].x}) ({corners[0].y}..{corners[1].y})");
+        
+        //Debug.Log($"{mousePos} ({corners[0].x}..{corners[3].x}) ({corners[0].y}..{corners[1].y})");
         return mousePos.x > corners[0].x && mousePos.x < corners[2].x && mousePos.y < corners[1].y && mousePos.y > corners[3].y;
     }
 }

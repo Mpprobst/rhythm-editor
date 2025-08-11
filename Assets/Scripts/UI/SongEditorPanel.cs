@@ -43,6 +43,7 @@ public class SongEditorPanel : UILayout
     private int numNotes;
     private float beatWidth;
 
+    private List<Track> tracks = new List<Track>();
 
     protected override void Awake()
     {
@@ -73,22 +74,17 @@ public class SongEditorPanel : UILayout
 
         if (Mouse.current.scroll.value.magnitude > 0 && Utils.IsMouseInRect(Mouse.current.position.value, trackView.viewport)) 
         {
-            Debug.Log("Showtime");
             if (Keyboard.current.leftShiftKey.isPressed)
             {
                 // zoom in and out
                 zoom = Mathf.Clamp(zoom + Mouse.current.scroll.value.y / 1000f, minZoom, maxZoom);
-                Debug.Log(zoom);
                 SetWidth();
             }
         }
     }
 
     public void AddTrack(bool val)
-    {
-        // NOTE: these must have the same height as the add track buttons
-        // add a track button that handles it's settings
-        
+    {   
         // ensures track names and tracks line up. do this here because button height wasn't ready on awake
         trackContainer.sizeDelta = new Vector2(0, addTrackButton.GetComponent<RectTransform>().rect.height);
         
@@ -98,9 +94,9 @@ public class SongEditorPanel : UILayout
         newTrackData.elementName = "New Track " + trackButtons.Count + 1;
         newTrackData.popoutPrefab = (GameObject)Resources.Load<Object>("UI/Popouts/PopoutBase");    // needs to be a specific Track popout because it needs its own class
         List<ElementInputOptionData> options = new List<ElementInputOptionData>();
-        ElementInputOptionData trackNameOptionData = new ElementInputOptionData(OptionType.TEXT, newTrackData.elementName);
-        ElementInputOptionData noteIconData = new ElementInputOptionData(OptionType.FILE, "Note Image", FileType.IMAGE);
-        ElementInputOptionData keybindData = new ElementInputOptionData(OptionType.TEXT, "Keybind");
+        ElementInputOptionData trackNameOptionData = new ElementInputOptionData(OptionType.TEXT, "Track Name");
+        ElementInputOptionData noteIconData = new ElementInputOptionData(OptionType.DROPDOWN, "Note Image", FileType.IMAGE);
+        ElementInputOptionData keybindData = new ElementInputOptionData(OptionType.ACTION, "Keybind");
         options.Add(trackNameOptionData);
         options.Add(noteIconData);
         options.Add(keybindData);
@@ -108,7 +104,7 @@ public class SongEditorPanel : UILayout
         // default icon would be cool
         
         LayoutAlignment aligment = LayoutAlignment.CENTER;
-        // TODO: could get alignment frrom screen pos
+        // TODO: could get alignment from screen pos
         UIElement_PopoutButton trackButton = (UIElement_PopoutButton)LayoutGenerator.SpawnElement(newTrackData, secondaryRibbon, this, aligment, ScreenSide.LEFT);
         trackButton.id = trackButtons.Count;
         trackButton.SetColors(activeStyle);
@@ -117,7 +113,13 @@ public class SongEditorPanel : UILayout
         trackButtons.Add(trackButton as UIElement_PopoutButton);
         addTrackButton.transform.SetAsLastSibling();
 
-        Instantiate(trackPrefab, trackContainer);// TODO: connect this to the trackpopout class
+        GameObject trackObj = Instantiate(trackPrefab, trackContainer);// TODO: connect this to the trackpopout class
+        Track track = trackObj.GetComponent<Track>();
+        track.SetPopout(trackButton);
+
+        tracks.Add(track);
+
+        SetWidth(); // adding a track is setting the container width to 0 for some reason. whatever. this is a pretty cheap operation
     }
 
     private void SongSelected(string pathToSong)
@@ -143,8 +145,12 @@ public class SongEditorPanel : UILayout
     {
         beatWidth = Mathf.Max(defaultNoteWidth * zoom, minNoteWidth); 
         trackView.content.sizeDelta = new Vector2(numNotes * beatWidth, 0);  // height will be caucluated by layout components. No need to specify it here
+        Debug.Log("set width to " + trackView.content.sizeDelta);
         // TODO: some kind of repeating texture that could set tiling so every measure is noted.
         // TODO: multiple textures based on the note precision 
+        foreach (var track in tracks) {
+            track.roundToVal = beatWidth;
+        }
     }
 
     private void SetBPM(float bpm)
@@ -154,8 +160,6 @@ public class SongEditorPanel : UILayout
         SetWidth();
     }
 
-    // TODO TOMORROW: start adding notes
-    // TODO: call with left click
     private void AddNote(float trackPosition)
     {
         // use the beatWidth and the track width to know which beat this note was added to

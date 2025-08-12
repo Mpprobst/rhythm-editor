@@ -38,26 +38,26 @@ public class UIElement_Popout : MonoBehaviour, IUIStyle
     {
         ScreenSide screenSide = Utils.ScreenSideOfElement(relativeRect);
         RectTransform popoutRXForm = GetComponent<RectTransform>();
-        Vector2 anchorPivot = Vector2.one;// Utils.GetAnchorFromAlignment(screenSide, LayoutAlignment.CENTER);
-        if (screenSide == ScreenSide.LEFT) anchorPivot.y = 0;
-        else if (screenSide == ScreenSide.RIGHT) anchorPivot.y = 1;
-        else if (screenSide == ScreenSide.BOTTOM) anchorPivot.x = 0;
-        else anchorPivot.x = 1;
-
-        //Transform popoutParent = popoutRXForm.parent;
-        //popoutRXForm.SetParent(relativeRect);
+        Vector2 anchorPivot = Utils.GetScreenCorner(relativeRect);
         popoutRXForm.anchorMin = anchorPivot;
         popoutRXForm.anchorMax = anchorPivot;
         popoutRXForm.pivot = anchorPivot;
 
+        // alterations make it the opposite side of the relativeRect we are setting to
+        //Vector2 anchorPivot = Vector2.zero;// Utils.GetAnchorFromAlignment(screenSide, LayoutAlignment.CENTER);
+        if (screenSide == ScreenSide.LEFT) anchorPivot.x = 1; 
+        else if (screenSide == ScreenSide.RIGHT) anchorPivot.x = 0; 
+        else if (screenSide == ScreenSide.BOTTOM) anchorPivot.y = 1;
+        else anchorPivot.y = 0;
+        
         // pretty much puts the popout corner touching the corner of the button while being flush to its edge
+        // use the opposite anchor thing to add the rect size
         Vector2 popoutPos = Vector2.Scale(relativeRect.rect.size , anchorPivot-relativeRect.pivot) + new Vector2(relativeRect.position.x, relativeRect.position.y);
-        popoutPos += Vector2.Scale(relativeRect.pivot - anchorPivot, popoutRXForm.rect.size);
-        Debug.Log("popoutPos " +popoutPos);
+        // using the screen corner we don't need to add any more position based on the size of this popout
+        Debug.Log("popoutPos " + popoutPos);
         popoutRXForm.position = popoutPos;
 
-        //popoutRXForm.SetParent(popoutParent);
-        popoutRXForm.localScale = Vector3.one;
+        GetComponent<ScreenConstraint>()?.CheckPosition();
     }
 
     // should be openable from several sources

@@ -133,9 +133,9 @@ public class Track : MonoBehaviour, IUIStyle, IPointerClickHandler
     {
         Vector2 localPos = Utils.RectCornerLocalPosition(rxForm, Vector2.up);
         Vector2 p = rxForm.InverseTransformPoint(eventData.position);
-        // TODO: don't spawn if there's another note within round distance
-        // TODO: use note to get element width? because it could be a long note
-          
+
+        // don't need to check if a note already exists in this location because the raycast will be blocked by the note
+
         // spawn a note
         GameObject noteObj = GameObject.Instantiate(notePrefab);
         RectTransform noteRxForm = noteObj.GetComponent<RectTransform>();
@@ -144,11 +144,10 @@ public class Track : MonoBehaviour, IUIStyle, IPointerClickHandler
         noteObj.transform.localScale = Vector3.one;
 
         Vector2 relativePos = noteRxForm.anchoredPosition;
-        relativePos.x = Mathf.RoundToInt(relativePos.x / roundToVal) * roundToVal;
+        relativePos.x = Mathf.FloorToInt(relativePos.x / roundToVal) * roundToVal;
         relativePos.y = 0;
 
         // use track pivot and note pivot times track height;
-        // track is (0,1) note is (0, 0) need to add 0,1
         Vector2 noteSize = Vector2.Scale(noteRxForm.pivot - rxForm.pivot, new Vector2(noteRxForm.rect.width, rxForm.rect.height));
         relativePos += noteSize;
         noteRxForm.anchoredPosition = relativePos;
@@ -159,7 +158,6 @@ public class Track : MonoBehaviour, IUIStyle, IPointerClickHandler
         note.SetStyle(iconFileOption.GetOptionImage(iconFileOption.GetValue()), keyColor);
         note.onClick.AddListener(OnNoteRemoved);
 
-        // TODO: sort notes by x val
         notes.Add(noteObj.GetComponent<Note>());
         notes.Sort((x,y) => x.transform.position.x < y.transform.position.x ? 1 : -1);
     }

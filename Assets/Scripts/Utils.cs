@@ -64,6 +64,25 @@ public static class Utils
         return screenSide;
     }
 
+    public static Vector2 GetScreenCorner(RectTransform rxForm, bool round=true)
+    {
+        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
+        Canvas canvas = rxForm.GetComponentInParent<Canvas>();
+        if (canvas)
+            screenSize = canvas.renderingDisplaySize;   // because this is how transforms determine their position
+
+        Vector2 posDiff = new Vector2(rxForm.position.x, rxForm.position.y);    // using center of screen because negative values clearly indicate our quadrant of screen
+        posDiff = new Vector2(posDiff.x / screenSize.x, posDiff.y / screenSize.y);  // scales so our comparison between axes is fair
+        if (posDiff.x < 0.25f) posDiff.x = 0;
+        else if (posDiff.x < 0.75f) posDiff.x = 0.5f;
+        else posDiff.x = 1;
+        if (posDiff.y < 0.25f) posDiff.y = 0;
+        else if (posDiff.y < 0.75f) posDiff.y = 0.5f;
+        else posDiff.y = 1;
+
+        return posDiff;
+    }
+
     // could do fancy math here to calculate the enum code for the alignment, but that code is very hard to read
     // ex: any alignment that is Left, add 3 and you have the right version
     public static TMPro.TextAlignmentOptions GetTextAlignmentOption(ScreenSide screenSide, LayoutAlignment layoutAlignment)

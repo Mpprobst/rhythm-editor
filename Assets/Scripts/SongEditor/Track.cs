@@ -59,7 +59,7 @@ public class Track : MonoBehaviour, IUIStyle, IPointerClickHandler
         colorOption.onActivate.AddListener(StartRecordingColor);
 
         deleteOption = popoutButton.popout.GetOption<PopoutOption_Action>("Delete");
-        deleteOption.onActivate.AddListener(DestroyTrack);
+        deleteOption.onActivate.AddListener(TryDestroyTrack);
 
         InputSystem.onAnyButtonPress.Call(currentAction =>
         {
@@ -140,10 +140,13 @@ public class Track : MonoBehaviour, IUIStyle, IPointerClickHandler
         ColorPopout.Instance.onClose.RemoveListener(StopSettingKeyColor);
     }
 
+    public void TryDestroyTrack()
+    {
+        MessageModal.ShowMessage("Are you sure?", "Are you sure you want to remove this track and all its contents?", "Yes", DestroyTrack, "No", null);       
+    }
+
     public void DestroyTrack()
     {
-        // TODO: are you sure modal
-        Debug.LogWarning("Destroying track. Are you sure?");
         onTrackDestroy.Invoke(this);
         Destroy(gameObject);
         Destroy(trackPopout.popout.gameObject);

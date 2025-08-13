@@ -218,11 +218,13 @@ public class SongEditorPanel : UILayout
         {
             // TODO: a modal
             Debug.LogWarning("Cannot save when there is no song loaded!");
+            MessageModal.ShowMessage("Save Fail", "Cannot save when a song has not yet been loaded");
             return;
         }
 
         if (tracks.Count == 0)
         {
+            MessageModal.ShowMessage("Save Fail", "Cannot save if the song has not tracks");
             Debug.LogWarning("Cannot sasve when there is no track data!");
             return;
         }
@@ -240,6 +242,7 @@ public class SongEditorPanel : UILayout
             var track = tracks[i];
             if (string.IsNullOrEmpty(track.Keybind) || string.IsNullOrEmpty(track.KeyPath))
             {
+                MessageModal.ShowMessage("Save Fail", $"Cannot save when {track.name} has no keybind!");
                 Debug.LogWarning($"cannot save when {track.name} has no keybind!");
                 return;
             }
@@ -273,6 +276,7 @@ public class SongEditorPanel : UILayout
         if (!File.Exists(path))
         {
             Debug.LogWarning("Cannot load track file. It doesn't exist");
+            MessageModal.ShowMessage("Load Fail", "Track failed to load because the track file does not exist at " + path);
             return;
         }
         Debug.Log($"Load song at:" + path);
@@ -281,6 +285,7 @@ public class SongEditorPanel : UILayout
 
         if (!File.Exists(songData.pathToSong))
         {
+            MessageModal.ShowMessage("Load Fail", "Track failed to load because path to song does not exist " + songData.pathToSong);
             Debug.LogWarning("Track failed to load because path to song does not exist " + songData.pathToSong);
             return;
         }

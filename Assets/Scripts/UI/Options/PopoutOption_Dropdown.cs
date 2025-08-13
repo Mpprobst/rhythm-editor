@@ -24,6 +24,7 @@ public class PopoutOption_Dropdown : PopoutOption
             options.Add(new Dropdown.OptionData(info.options[i].optionName, info.options[i].optionIcon));
         }
         dropdown.options = options;
+        value = 0;
     }
     
     public int GetValue()

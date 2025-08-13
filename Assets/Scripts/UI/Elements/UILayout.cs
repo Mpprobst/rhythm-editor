@@ -13,6 +13,7 @@ public class UILayout : MonoBehaviour
     [SerializeField] protected UIStyleData activeStyle;
     [SerializeField] protected UIStyleData defaultStyle;
 
+
     protected virtual void Awake()
     {
 

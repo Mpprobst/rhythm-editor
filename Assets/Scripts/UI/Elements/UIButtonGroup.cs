@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // only allows one of each element to be active at once
+// TODO: allow buttons to be dragged and reordered
 public class UIButtonGroup : MonoBehaviour
 {
     public bool allowMultiple = false;

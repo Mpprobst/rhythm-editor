@@ -16,8 +16,8 @@ public class UIElement_Button : UIElement_Label
     public int id;
 
     [Header("Colors")]
-    [SerializeField] protected Color baseColorBackground, highlightColorBackground;
-    [SerializeField] protected Color baseColorLabel, highlightColorLabel;
+    public Color baseColorBackground, highlightColorBackground;
+    public Color baseColorLabel, highlightColorLabel;
 
     public override void SetInfo(UIElementData data, LayoutAlignment alignment, ScreenSide screenSide)
     {

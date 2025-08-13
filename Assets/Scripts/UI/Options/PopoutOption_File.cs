@@ -24,6 +24,7 @@ public class PopoutOption_File : PopoutOption_Action
         label.gameObject.SetActive(true);
         icon.sprite = Resources.Load<Sprite>($"Sprites/{fileType.ToString()}");
         icon.gameObject.SetActive(true);
+        value = "";
     }
 
     protected override void Awake()
@@ -46,16 +47,29 @@ public class PopoutOption_File : PopoutOption_Action
         						   FileBrowser.PickMode.FilesAndFolders, false, null, null, "Select Folder", "Select" );
     }
 
+    public string GetPathToFile()
+    {
+        return value.ToString();
+    }
+
     private void FileSelected(string[] paths)
+    {
+        SetValueNoNotify(paths[0]);
+        if (onFileSelected != null)
+            onFileSelected.Invoke(paths[0]);
+        SetValue(paths[0]); 
+    }    
+
+    public void SetValueNoNotify(string path)
     {
         if (fileType == FileType.IMAGE)
         {
             Texture2D tex = new Texture2D(1, 1);
-            tex.LoadImage(File.ReadAllBytes(paths[0]));
+            tex.LoadImage(File.ReadAllBytes(path));
             float w = tex.width;
             float h = tex.height;
             float aspect = w / h;
-            AspectRatioFitter arFitter = icon.GetComponent<AspectRatioFitter>();    
+            AspectRatioFitter arFitter = icon.GetComponent<AspectRatioFitter>();
             if (arFitter)
             {
                 AspectRatioFitter.AspectMode aspectMode = AspectRatioFitter.AspectMode.WidthControlsHeight;
@@ -71,19 +85,16 @@ public class PopoutOption_File : PopoutOption_Action
             icon.gameObject.SetActive(false);
             loadedImage.gameObject.SetActive(true);
             loadedImage.texture = tex;
-            
-            description.text = Path.GetFileName(paths[0]);
+
+            description.text = Path.GetFileName(path);
         }
         else
         {
             icon.gameObject.SetActive(true);
             loadedImage.gameObject.SetActive(false);
         }
-
-        if (onFileSelected != null)
-            onFileSelected.Invoke(paths[0]);
-        SetValue(paths[0]); 
-    }    
+        value = path;
+    }
 
     public override void SetColors(UIStyleData style)
     {

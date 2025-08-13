@@ -21,6 +21,48 @@ MonoBehaviour:
   shortcut: 
   isToggle: 0
   popoutOptions:
+  - optionType: 2
+    optionName: Song name
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 5166355709975138858, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
+    placeholder: 
+    min: 1
+    max: 200
+    defaultValue: 120
+    scale: 1
+    useSlider: 1
+    roundToInt: 1
+    options: []
+    fileType: 0
+  - optionType: 0
+    optionName: Save
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 1594579095579054170, guid: 9a20faaf951919c4b8dadb0316fb0ea3, type: 3}
+    placeholder: 
+    min: 1
+    max: 200
+    defaultValue: 120
+    scale: 1
+    useSlider: 1
+    roundToInt: 1
+    options: []
+    fileType: 0
+  - optionType: 5
+    optionName: Load
+    description: Please select a Track
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 7350818157209317526, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
+    placeholder: 
+    min: 1
+    max: 200
+    defaultValue: 120
+    scale: 1
+    useSlider: 1
+    roundToInt: 1
+    options: []
+    fileType: 2
   - optionType: 5
     optionName: Song
     description: Please select a Mp3

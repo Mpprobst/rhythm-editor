@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using Newtonsoft.Json;
+using Unity.VisualScripting;
 
 public class SongEditorPanel : UILayout
 {
@@ -28,7 +29,7 @@ public class SongEditorPanel : UILayout
     [SerializeField] private AudioSource songSource;
 
     // UI Elements
-    protected UIElement_Label songLabel;
+    protected UIElement_Label songLabel, sectionLabel;
     protected UIElement_Button addTrackButton;
     protected UIElement_PopoutButton songOptionsButton; // loads new song mp3s and sets bpm
     protected PopoutOption_Text songNameOption;
@@ -55,10 +56,13 @@ public class SongEditorPanel : UILayout
         base.Awake();
         // probably disable this while we don't have a song loaded
         songLabel = GetElement<UIElement_Label>("Song and Instrument");
+        sectionLabel = GetElement<UIElement_Label>("Sections");
+        sectionLabel.AddComponent<UIReorderIgnore>();
 
         addTrackButton = GetElement<UIElement_Button>("Add Track");
         addTrackButton.onActivate.AddListener(SpawnNewTrack);
-        
+        addTrackButton.AddComponent<UIReorderIgnore>();
+
         songOptionsButton = GetElement<UIElement_PopoutButton>("Song Settings");
 
         songNameOption = songOptionsButton.popout.GetOption<PopoutOption_Text>("Song Name");
@@ -127,7 +131,7 @@ public class SongEditorPanel : UILayout
         ElementInputOptionData deleteOptionData = new ElementInputOptionData(OptionType.ACTION, "Delete");
 
         options.Add(trackNameOptionData);
-        options.Add(noteIconData);
+        options.Add(noteIconData);   
         options.Add(keybindData);
         options.Add(colorData);
         options.Add(deleteOptionData);
@@ -140,6 +144,7 @@ public class SongEditorPanel : UILayout
         trackButton.id = trackButtons.Count;
         trackButton.SetColors(activeStyle);
         trackButton.SetStyle(activeStyle);
+        //trackButton.AddComponent<UILayoutReorder>();
 
         trackButtons.Add(trackButton as UIElement_PopoutButton);
         addTrackButton.transform.SetAsLastSibling();

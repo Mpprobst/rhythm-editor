@@ -38,3 +38,13 @@ Song Editor Panel
 
 Instrument Editor Panel
 1. 
+
+
+
+
+TODO
+- modal
+- reorder tracks
+- long notes and hammerons
+- new sprites
+- presentation

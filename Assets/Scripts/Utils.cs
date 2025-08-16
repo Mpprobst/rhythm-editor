@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using System.Collections.Generic;
 
 public static class Utils
 {
@@ -192,5 +193,23 @@ public static class Utils
         
         //Debug.Log($"{mousePos} ({corners[0].x}..{corners[3].x}) ({corners[0].y}..{corners[1].y})");
         return mousePos.x > corners[0].x && mousePos.x < corners[2].x && mousePos.y < corners[1].y && mousePos.y > corners[3].y;
+    }
+
+    // speicifying a type could be a cool function too
+    public static List<Transform> GetImmediateChildren(Transform parent)
+    {
+        List<Transform> children = new List<Transform>();
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform child = parent.GetChild(i);
+            if (child.parent == parent)
+                children.Add(child);
+        }
+        return children;
+    }
+
+    public static float Vector2Sum(Vector2 vector)
+    {
+        return vector.x + vector.y;
     }
 }

@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class UIDrag : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [Tooltip("The whoe item that will be dragged")][SerializeField] private RectTransform rxForm;
+    [Tooltip("The item that will be dragged")][SerializeField] protected RectTransform rxForm;
     Canvas parentCanvas;
 
-    private bool isDragging = false;
+    protected bool isDragging = false;
     private Vector2 dragOffset = Vector2.zero;
 
-    public void OnPointerDown(PointerEventData eventData)
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
         // start following the mouse
+        if (rxForm == null)
+            rxForm = GetComponent<RectTransform>();
         isDragging = true;
         Vector2 pos = new Vector2(rxForm.position.x, rxForm.position.y);    // rxForm.anchoredPosition
         dragOffset = pos - eventData.position;  
         if (parentCanvas == null)
-            parentCanvas = rxForm.GetComponentInParent<Canvas>();   
+            parentCanvas = rxForm.GetComponentInParent<Canvas>();
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public virtual void OnPointerUp(PointerEventData eventData)
     {
         // stop tracking the mouse
         isDragging = false;
@@ -33,7 +36,7 @@ public class UIDrag : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (isDragging)
         {

@@ -12,13 +12,111 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f63a28fb97e0e44ea6aac28dc33f6a7, type: 3}
   m_Name: ScaleExamplePopout
   m_EditorClassIdentifier: 
-  elementType: 0
-  elementPrefab: {fileID: 0}
-  elementName: 
-  description: 
+  elementType: 2
+  elementPrefab: {fileID: 4429121943696435980, guid: f90c425644a5f9e49911757c158e4fa9, type: 3}
+  elementName: Scale Display
+  description: Shows the details of a rect transform
   icon: {fileID: 0}
-  stacking: 0
+  stacking: 1
   shortcut: 
   isToggle: 0
-  popoutOptions: []
-  popoutPrefab: {fileID: 0}
+  popoutOptions:
+  - optionType: 2
+    optionName: Position
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 5166355709975138858, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
+    placeholder: 
+    min: 0
+    max: 0
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+    fileType: 0
+  - optionType: 2
+    optionName: Anchored Position
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 5166355709975138858, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
+    placeholder: 
+    min: 0
+    max: 0
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+    fileType: 0
+  - optionType: 2
+    optionName: Size
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 5166355709975138858, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
+    placeholder: 
+    min: 0
+    max: 0
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+    fileType: 0
+  - optionType: 2
+    optionName: Size Delta
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 5166355709975138858, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
+    placeholder: 
+    min: 0
+    max: 0
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+    fileType: 0
+  - optionType: 2
+    optionName: Anchor Min
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 5166355709975138858, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
+    placeholder: 
+    min: 0
+    max: 0
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+    fileType: 0
+  - optionType: 2
+    optionName: Anchor Max
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 5166355709975138858, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
+    placeholder: 
+    min: 0
+    max: 0
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+    fileType: 0
+  - optionType: 2
+    optionName: Pivot
+    description: 
+    icon: {fileID: 0}
+    optionPrefab: {fileID: 5166355709975138858, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
+    placeholder: 
+    min: 0
+    max: 0
+    defaultValue: 0
+    scale: 0
+    useSlider: 0
+    roundToInt: 0
+    options: []
+    fileType: 0
+  popoutPrefab: {fileID: 5415579742428469937, guid: 300de8abab9365d4f9925c703ea25eca, type: 3}

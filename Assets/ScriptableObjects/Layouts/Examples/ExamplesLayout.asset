@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa917d1cb4c978449b6fb7137db761f, type: 3}
   m_Name: ExamplesLayout
   m_EditorClassIdentifier: 
-  primaryGroupData: []
+  primaryGroupData:
+  - groupName: Examples
+    alignment: 0
+    buttonData:
+    - {fileID: 11400000, guid: d8fd0df534119374c99f9f5447091192, type: 2}
+    allowMultipleActiveButtons: 0
   secondaryGroupData: []
   subLayout: {fileID: 0}
-  layoutPrefab: {fileID: 0}
-  defaultPalette: {fileID: 0}
+  layoutPrefab: {fileID: 8585011780490687680, guid: fcdfc095ccc4e9147a4fd5f78480c98d, type: 3}
+  defaultPalette: {fileID: 11400000, guid: 6ed205ed77b45c2439a9ac665b9a987e, type: 2}

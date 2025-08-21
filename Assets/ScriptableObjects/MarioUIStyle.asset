@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86aea31aea5f3164cb2b5eef7d097024, type: 3}
+  m_Name: MarioUIStyle
+  m_EditorClassIdentifier: 
+  backgroundColor: {r: 0.91764706, g: 0.61960787, b: 0.13333334, a: 1}
+  backgroundColor_secondary: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+  backgroundColor_highlight: {r: 0.03856234, g: 0.8018868, b: 0, a: 1}
+  iconColor: {r: 0, g: 0, b: 0, a: 1}
+  iconColor_highlight: {r: 1, g: 1, b: 1, a: 1}
+  textColor_primary: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
+  textColor_secondary: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
+  backgroundSprite: {fileID: 0}
+  buttonSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

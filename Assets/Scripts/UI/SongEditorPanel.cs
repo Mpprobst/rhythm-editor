@@ -80,6 +80,7 @@ public class SongEditorPanel : UILayout
         bpmOption = songOptionsButton.popout.GetOption<PopoutOption_Number>("BPM");
         bpmOption.onNumberChanged.AddListener(SetBPM);
 
+        UIElement_Button playbutton = GetElement<UIElement_Button>("Play");
 
         trackContainer.sizeDelta = new Vector2(0, 0);   // hides this before we have added anything
 
@@ -103,6 +104,11 @@ public class SongEditorPanel : UILayout
             }
         }
     }
+
+
+
+
+
 
     private void SpawnNewTrack(bool val)
     {

@@ -25,6 +25,7 @@ MonoBehaviour:
     buttonData:
     - {fileID: 11400000, guid: 616d95a775015984fb890220fa3a85c4, type: 2}
     - {fileID: 11400000, guid: 229c5d5db24afc34faf7d52379fd2f87, type: 2}
+    - {fileID: 11400000, guid: aa6194afae26b3548871a944a11a4288, type: 2}
     allowMultipleActiveButtons: 0
   subLayout: {fileID: 0}
   layoutPrefab: {fileID: 1730468420525582191, guid: 560aeb7a002068441b4d0451fbc0fe29, type: 3}

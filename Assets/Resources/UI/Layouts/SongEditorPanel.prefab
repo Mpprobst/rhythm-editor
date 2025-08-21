@@ -409,6 +409,7 @@ MonoBehaviour:
   notePrecision: 4
   noteSprites:
   - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: 78efa4db241fc4a498c4efaa7b1dcf22, type: 3}
   songSource: {fileID: 0}
 --- !u!1 &2541241573667037315
 GameObject:
@@ -1569,7 +1570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 859519033661253461, guid: 98e6ff0474a9fbf4eb8f7fa0c91e953e, type: 3}
       propertyPath: m_AspectRatio
-      value: 19.719414
+      value: 19.728836
       objectReference: {fileID: 0}
     - target: {fileID: 1072065111619752361, guid: 98e6ff0474a9fbf4eb8f7fa0c91e953e, type: 3}
       propertyPath: m_Name
@@ -1709,7 +1710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8573508552351972145, guid: 98e6ff0474a9fbf4eb8f7fa0c91e953e, type: 3}
       propertyPath: m_AspectRatio
-      value: 24.399267
+      value: 24.411045
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

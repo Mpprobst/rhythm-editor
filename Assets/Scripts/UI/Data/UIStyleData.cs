@@ -8,6 +8,7 @@ public class UIStyleData : ScriptableObject
 {
     public Color backgroundColor;
     public Color backgroundColor_secondary;
+    public Color backgroundColor_tertiary;
     public Color backgroundColor_highlight;
 
     public Color iconColor;
@@ -17,7 +18,9 @@ public class UIStyleData : ScriptableObject
     // no text highlight because it will use the same as icon
 
     public Sprite backgroundSprite;
+    public Sprite inputBackgroundSprite;
     public Sprite buttonSprite;
+    public Sprite handleSprite;
     public TMPro.TMP_FontAsset font;
 
 }

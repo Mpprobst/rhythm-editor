@@ -43,8 +43,28 @@ Instrument Editor Panel
 
 
 TODO
-- modal
-- reorder tracks
+x modal
+? reorder tracks
 - long notes and hammerons
 - new sprites
-- presentation
+x presentation
+
+1. Song Editor Interface
+	- new sprites
+		- standard, and mario as example
+	- play/record mode
+	- dark/light mode
+	- long notes and hammerons (could be a coding challenge)
+2. Exercise setup
+	- new branches for exercises
+	a. HUD
+		- TODO: what base work do i want to do for this?
+	b. Grid Game
+		- TODO: what base work do i want to do for this?
+	c. Song Editor Features
+		- remove certain features. Maybe leave the scripts, but delete the code with Raised exceptions to finish it?
+3. Presentation
+	- GIFs of UI Drag and Screen Constraint
+		- show screen constraint if not scaling to screen
+	- GIF of clicking on the track and converting that to a local position (show debug logs for how the position is calcd)
+

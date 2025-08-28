@@ -21,32 +21,22 @@ MonoBehaviour:
   shortcut: 
   isToggle: 0
   popoutOptions:
-  - optionType: 1
-    optionName: Dark Mode
-    description: 
-    icon: {fileID: 0}
-    optionPrefab: {fileID: 795086842757008906, guid: 97ce495e707dca241a4e2368462ebf07, type: 3}
-    placeholder: 
-    min: 0
-    max: 0
-    defaultValue: 0
-    scale: 0
-    useSlider: 0
-    roundToInt: 0
-    options: []
-    fileType: 0
-  - optionType: 3
-    optionName: Nimber
-    description: 
-    icon: {fileID: 0}
-    optionPrefab: {fileID: 8303171234664761828, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+  - optionType: 4
+    optionName: Example
+    description: This is my description
+    icon: {fileID: 21300000, guid: 78efa4db241fc4a498c4efaa7b1dcf22, type: 3}
+    optionPrefab: {fileID: 940146509550251598, guid: a4d2c1c5795133c4690ab0d16d5d0814, type: 3}
     placeholder: 
     min: 0
     max: 1
     defaultValue: 0
     scale: 0
-    useSlider: 0
+    useSlider: 1
     roundToInt: 0
-    options: []
+    options:
+    - optionName: Icon
+      optionIcon: {fileID: 21300000, guid: 3b2a773e413d3e84f8c7c757734af584, type: 3}
+    - optionName: 
+      optionIcon: {fileID: 0}
     fileType: 0
   popoutPrefab: {fileID: 495404450411582926, guid: 845d07a6a8c3a1c4ba63c5525ca4bd72, type: 3}

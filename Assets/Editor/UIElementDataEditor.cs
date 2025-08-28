@@ -38,18 +38,6 @@ public class UIElementDataEditor : Editor
         EditorGUILayout.PropertyField(elementType_prop);
 
         UIElementType elementType = (UIElementType)elementType_prop.enumValueIndex;
-        string elementPrefabName = $"UI/Elements/UIElement_{Utils.ToHumanReadable(elementType)}";
-        if (elementType == UIElementType.POPOUT)
-        {
-            elementPrefabName += "Button";
-
-            string popoutName = $"UI/Popouts/{elementName_prop.stringValue}_Popout";
-            Object popoutPrefab = Resources.Load<Object>(popoutName);
-            if (popoutPrefab == null || popoutPrefab_prop.objectReferenceValue == null)
-                popoutPrefab = Resources.Load<Object>("UI/Popouts/PopoutBase");
-            popoutPrefab_prop.objectReferenceValue = popoutPrefab; 
-        }
-        elementPrefab_prop.objectReferenceValue = Resources.Load(elementPrefabName);
 
         // reflection here is way more scalable, especially if we add new fields to our class later
         // otherwise we are finding 

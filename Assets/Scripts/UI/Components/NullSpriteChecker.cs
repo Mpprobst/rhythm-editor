@@ -10,8 +10,8 @@ public class NullSpriteChecker : MonoBehaviour
 
     private void Start()
     {
-        Invoke("CheckSprite", 0.1f);    // element may not be fully set up yet. especially in dropdowns
-        //CheckSprite();
+        // element may not be fully set up yet. especially in dropdowns
+        Invoke("CheckSprite", 0.1f);    
     }
 
     public void CheckSprite()

@@ -19,6 +19,6 @@ MonoBehaviour:
   iconColor_highlight: {r: 1, g: 1, b: 1, a: 1}
   textColor_primary: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
   textColor_secondary: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
-  backgroundSprite: {fileID: 0}
-  buttonSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  backgroundSprite: {fileID: 21300000, guid: 73535fa08fc9c6f4b8e5a52290383c77, type: 3}
+  buttonSprite: {fileID: 21300000, guid: 9c043c1bb7c437d4c93221a88e8832c3, type: 3}
+  font: {fileID: 11400000, guid: 85cf44ec96077194386e518c3419d88e, type: 2}

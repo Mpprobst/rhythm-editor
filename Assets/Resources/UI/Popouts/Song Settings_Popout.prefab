@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Song Settings
       objectReference: {fileID: 0}
+    - target: {fileID: 3101820849981287370, guid: 300de8abab9365d4f9925c703ea25eca, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 5415579742428469937, guid: 300de8abab9365d4f9925c703ea25eca, type: 3}
       propertyPath: m_Name
       value: Song Settings_Popout
@@ -96,6 +100,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7075720010051700804, guid: 300de8abab9365d4f9925c703ea25eca, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -132,6 +140,10 @@ PrefabInstance:
     - target: {fileID: 208029612403681215, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
       propertyPath: m_text
       value: Load
+      objectReference: {fileID: 0}
+    - target: {fileID: 208029612403681215, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 3453671922482344719, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
       propertyPath: fileType
@@ -257,6 +269,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Please select a Track
       objectReference: {fileID: 0}
+    - target: {fileID: 6464349399717157309, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 7350818157209317526, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
       propertyPath: m_Name
       value: PopoutOption_File_Load
@@ -359,6 +375,10 @@ PrefabInstance:
       propertyPath: m_text
       value: BPM
       objectReference: {fileID: 0}
+    - target: {fileID: 2873372625807128280, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 3206237724651986402, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -374,6 +394,10 @@ PrefabInstance:
     - target: {fileID: 3438910337886331782, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3438910337886331782, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 4474451616825536997, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_Value
@@ -474,6 +498,10 @@ PrefabInstance:
     - target: {fileID: 6004946845602470655, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354702231345503181, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 6824852097487507217, guid: 096580df9e103ef479dc4aa09475c637, type: 3}
       propertyPath: scale
@@ -721,6 +749,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Save
       objectReference: {fileID: 0}
+    - target: {fileID: 7752245545445093971, guid: 9a20faaf951919c4b8dadb0316fb0ea3, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 7818013797074765333, guid: 9a20faaf951919c4b8dadb0316fb0ea3, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -746,6 +778,10 @@ PrefabInstance:
     - target: {fileID: 208029612403681215, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
       propertyPath: m_text
       value: Song
+      objectReference: {fileID: 0}
+    - target: {fileID: 208029612403681215, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 3453671922482344719, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
       propertyPath: optionName
@@ -867,6 +903,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Please select a Mp3
       objectReference: {fileID: 0}
+    - target: {fileID: 6464349399717157309, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 7350818157209317526, guid: 00d2388f9d3f8b14d865077a2ae51468, type: 3}
       propertyPath: m_Name
       value: PopoutOption_File_Song
@@ -937,6 +977,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Song name
       objectReference: {fileID: 0}
+    - target: {fileID: 1398396504864910614, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 2601802606437252405, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -968,6 +1012,10 @@ PrefabInstance:
     - target: {fileID: 2906850811668309056, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085290579681681900, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     - target: {fileID: 4462128488674968677, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
       propertyPath: m_IsActive
@@ -1084,6 +1132,10 @@ PrefabInstance:
     - target: {fileID: 8864364253330311681, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864364253330311681, guid: 768bb97608f349d4cb92231b4baf528e, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

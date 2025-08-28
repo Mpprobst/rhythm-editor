@@ -21,7 +21,7 @@ public class PopoutOption_Dropdown : PopoutOption
         List<Dropdown.OptionData> options = new List<Dropdown.OptionData>();
         for (int i = 0; i < info.options.Length; i++)
         {
-            options.Add(new Dropdown.OptionData(info.options[i].optionName, info.options[i].optionIcon));
+            options.Add(new Dropdown.OptionData(info.options[i].optionName, info.options[i].optionIcon, Color.white));
         }
         dropdown.options = options;
         value = 0;

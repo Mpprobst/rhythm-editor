@@ -5,7 +5,8 @@ using UnityEngine;
 // this interface will be used in other elements, not just the direct inherited classes of UIElement
 public interface IUIStyle
 {
-    // data contains info for colors and element sprites, but we want those in two different functions. no need to set them all the time
+    // style data contains info for colors and element sprites,
+    // but we want those in two different functions. no need to set sprites all the time
     public void SetColors(UIStyleData style);
     public void SetStyle(UIStyleData style);
 }

@@ -97,7 +97,7 @@ public static class Utils
                     alignment = TMPro.TextAlignmentOptions.TopLeft;
                 else if (layoutAlignment == LayoutAlignment.RIGHT)
                     alignment = TMPro.TextAlignmentOptions.BottomLeft;
-                else
+                //else
                     alignment = TMPro.TextAlignmentOptions.Left;
                 break;
             case ScreenSide.RIGHT:
@@ -106,7 +106,7 @@ public static class Utils
                     alignment = TMPro.TextAlignmentOptions.TopRight;
                 else if (layoutAlignment == LayoutAlignment.RIGHT)
                     alignment = TMPro.TextAlignmentOptions.BottomRight;
-                else
+                //else
                     alignment = TMPro.TextAlignmentOptions.Right;
                 break;
             case ScreenSide.TOP:
@@ -114,7 +114,7 @@ public static class Utils
                     alignment = TMPro.TextAlignmentOptions.TopLeft;
                 else if (layoutAlignment == LayoutAlignment.RIGHT)
                     alignment = TMPro.TextAlignmentOptions.TopRight;
-                else
+                //else
                     alignment = TMPro.TextAlignmentOptions.Top;
                 break;
             case ScreenSide.BOTTOM:
@@ -122,7 +122,7 @@ public static class Utils
                     alignment = TMPro.TextAlignmentOptions.BottomLeft;
                 else if (layoutAlignment == LayoutAlignment.RIGHT)
                     alignment = TMPro.TextAlignmentOptions.BottomRight;
-                else
+                //else
                     alignment = TMPro.TextAlignmentOptions.Bottom;
                 break;
         }
@@ -154,10 +154,41 @@ public static class Utils
         return new Vector2(x, y);
     }
 
+    public static Vector3 GetOverallScale(Transform obj)
+    {
+        Vector3 scale = obj.localScale;
+        Transform parent = obj.parent;
+        while (parent != null)
+        {
+            scale = Vector3.Scale(scale, parent.localScale);
+            parent = parent.parent;
+        }
+        return scale;
+    }
+
     // gets the corner position of a rect relative to its anchored position. Good for when elements are in a layout group and you want the position relative to its top (or other aligned side)
     public static Vector2 RectCornerLocalPosition(RectTransform rxForm, Vector2 corner)
     {
         return Vector2.Scale(rxForm.anchoredPosition, corner - rxForm.pivot);
+    }
+
+    public enum AnchorPreset { LEFT, TOP, RIGHT, BOTTOM }
+    // thruple: (anchorMin, anchorMax, align)
+    static Dictionary<AnchorPreset, (Vector2, Vector2, Vector2)> anchorPresets = new Dictionary<AnchorPreset, (Vector2, Vector2, Vector2)> {
+        { AnchorPreset.LEFT, (Vector2.zero, Vector2.up, Vector2.right)},
+        { AnchorPreset.TOP, (Vector2.up, Vector2.one, Vector2.up)},
+        { AnchorPreset.RIGHT, (Vector2.right, Vector2.one, Vector2.right)},
+        { AnchorPreset.BOTTOM, (Vector2.zero, Vector2.right, Vector2.up)},
+    };
+
+    public static void StretchRectEdge(RectTransform rxForm, Vector2 bufferSize, AnchorPreset anchors)
+    {
+        rxForm.anchorMin = anchorPresets[anchors].Item1;
+        rxForm.anchorMax = anchorPresets[anchors].Item2;
+        rxForm.pivot = anchorPresets[anchors].Item2 / 2f;
+        Vector2 scale = rxForm.anchorMin - rxForm.anchorMax + anchorPresets[anchors].Item3;
+        rxForm.sizeDelta = Vector2.Scale(bufferSize, scale);
+        rxForm.anchoredPosition = Vector2.Scale(rxForm.pivot - scale/2f , bufferSize / 2f);
     }
 
     public static Vector2[] GetRectCorners(RectTransform rxForm)
@@ -167,12 +198,13 @@ public static class Utils
         // it's all in the pivot
         Vector2 pivot = rxForm.pivot;
         
-        // need to apply the parent scale to this child becasue scale trickles down. another reason keeping scale as 1,1,1 is ideal
         Canvas parentCanvas = rxForm.GetComponentInParent<Canvas>();
-        Vector2 size = Vector2.Scale(rxForm.rect.size, parentCanvas.transform.localScale);
-
-        // corners of the rect can be described same as the pivots. corner - pivot is the direction to the corner. scale that by the rect size and we have the extents of the rect 
-        Vector2 rectPos = new Vector2(rxForm.position.x, rxForm.position.y);    // this will be relative to the overall world
+        // need to apply the parent scale to this child becasue scale trickles down.        another reason keeping scale as 1,1,1 is ideal
+        Vector3 parentScale = GetOverallScale(rxForm);
+        Vector2 size = Vector2.Scale(rxForm.rect.size, parentScale);
+        // this will be relative to the overall world
+        Vector2 rectPos = new Vector2(rxForm.position.x, rxForm.position.y);    
+        // corners of the rect can be described same as the pivots.                         corner - pivot is the direction to the corner. scale that by the rect size and we have the extents of the rect 
         corners[0] = Vector2.Scale(Vector2.zero - pivot, size) + rectPos;
         corners[1] = Vector2.Scale(Vector2.up - pivot, size) + rectPos;
         corners[2] = Vector2.Scale(Vector2.one - pivot, size) + rectPos;

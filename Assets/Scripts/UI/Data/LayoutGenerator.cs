@@ -25,7 +25,11 @@ public static class LayoutGenerator
         List<UIElement_Popout> existingPopouts = layout.GetComponentsInChildren<UIElement_Popout>().ToList();
 
         SpawnLayoutGroup(layoutData.primaryGroupData, layout.primaryRibbon, layout, ref existingPopouts);
+        if (layout.primaryRibbon && layout.primaryRibbon.TryGetComponent<UIRibbon>(out UIRibbon uiRibbon))
+            uiRibbon.isPrimary = true;
         SpawnLayoutGroup(layoutData.secondaryGroupData, layout.secondaryRibbon, layout, ref existingPopouts);
+        if (layout.secondaryRibbon && layout.secondaryRibbon.TryGetComponent<UIRibbon>(out UIRibbon uiRibbon2))
+            uiRibbon2.isPrimary = true;
 
         layout.SetStyles(layoutData.defaultPalette);
         layout.SetElementColors();
@@ -48,12 +52,23 @@ public static class LayoutGenerator
         List<UIElement> existingElements = ribbon.GetComponentsInChildren<UIElement>().ToList();
         RectTransform ribbonRect = ribbon.GetComponent<RectTransform>();
         ScreenSide screenSide = Utils.ScreenSideOfElement(ribbonRect);
+        // keeps all children equal width
+        UIButtonGroup[] buttonGroups = ribbon.GetComponentsInChildren<UIButtonGroup>();
+        if (buttonGroups.Length > 0)
+        {
+            Vector2 size = ribbon.GetComponent<RectTransform>().rect.size / ribbon.childCount - Vector2.one * 20f;  // 20 is a safe buffer
+            for (int i = 0; i < ribbon.childCount; i++)
+            {
+                ribbon.GetChild(i).GetComponent<RectTransform>().sizeDelta = size;
+            }
+        }
+
+        
 
         // spawn all the things
         for (int i = 0; i < groupData.Length; i++)
         {
             LayoutAlignment alignment = groupData[i].alignment;
-            UIButtonGroup[] buttonGroups = ribbon.GetComponentsInChildren<UIButtonGroup>();
             Transform container = ribbon;
             if (buttonGroups.Length > 0)
             {

@@ -41,8 +41,11 @@ public static class LayoutGenerator
             UILayout sublayout = layout.window.GetComponentInChildren<UILayout>();
             if (layoutData.subLayout != null)
             {
+                var tempStyle = layoutData.subLayout.defaultPalette;
+                layoutData.subLayout.defaultPalette = layoutData.defaultPalette;    // trickle the style down
                 CreateLayout(layoutData.subLayout, ref sublayout, layout.window);
-                EditorUtil.SaveObjectAsPrefab(layout.gameObject, "Assets/Resources/UI/Layouts");    
+                EditorUtil.SaveObjectAsPrefab(layout.gameObject, "Assets/Resources/UI/Layouts");
+                layoutData.subLayout.defaultPalette = tempStyle;    // restore so developer isn't confused 
             }
         }
     }

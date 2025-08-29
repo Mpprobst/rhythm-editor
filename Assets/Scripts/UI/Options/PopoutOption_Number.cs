@@ -84,7 +84,7 @@ public class PopoutOption_Number : PopoutOption_Text
         base.SetColors(style);
         slider.GetComponentInChildren<Image>().color = style.backgroundColor_secondary;
         slider.fillRect.GetComponent<Image>().color = style.iconColor_highlight;
-        slider.handleRect.GetComponent<Image>().color = style.backgroundColor;
+        slider.handleRect.GetComponent<Image>().color = style.iconColor_highlight;
     }
 
     public override void SetStyle(UIStyleData style)

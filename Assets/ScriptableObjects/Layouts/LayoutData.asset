@@ -33,4 +33,4 @@ MonoBehaviour:
     allowMultipleActiveButtons: 0
   subLayout: {fileID: 11400000, guid: 7bc014ec3fd6e9543a70e9e71cd67ddf, type: 2}
   layoutPrefab: {fileID: 0}
-  defaultPalette: {fileID: 11400000, guid: 6ed205ed77b45c2439a9ac665b9a987e, type: 2}
+  defaultPalette: {fileID: 11400000, guid: cb18fc725dd774b418961626f12c9e4d, type: 2}

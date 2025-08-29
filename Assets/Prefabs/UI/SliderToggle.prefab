@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchButton: {fileID: 3435813023312805773}
-  background: {fileID: 0}
+  background: {fileID: 1018725443740546289}
   onColor: {r: 1, g: 0.4760489, b: 0, a: 1}
   offColor: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
   onValueChange:

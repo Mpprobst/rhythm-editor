@@ -63,7 +63,8 @@ public class SliderToggle : MonoBehaviour, IUIStyle
     public void SetStyle(UIStyleData style)
     {
         // maybe set the sprites? not sure
-        switchButton.sprite = style.buttonSprite;
+        background.sprite = style.inputBackgroundSprite;
+        switchButton.sprite = style.handleSprite;
 
     }
 }

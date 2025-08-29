@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86aea31aea5f3164cb2b5eef7d097024, type: 3}
   m_Name: UIStyleData
   m_EditorClassIdentifier: 
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  backgroundColor_secondary: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
-  backgroundColor_highlight: {r: 0.03856234, g: 0.8018868, b: 0, a: 1}
-  iconColor: {r: 0, g: 0, b: 0, a: 1}
-  iconColor_highlight: {r: 1, g: 1, b: 1, a: 1}
-  textColor_primary: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
-  textColor_secondary: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 1}
+  backgroundColor: {r: 0.3490566, g: 0.33094516, b: 0.33094516, a: 1}
+  backgroundColor_secondary: {r: 0.24528301, g: 0.21867211, b: 0.21867211, a: 1}
+  backgroundColor_tertiary: {r: 0.21698111, g: 0.14247325, b: 0.107467055, a: 1}
+  backgroundColor_highlight: {r: 0.735849, g: 0.376381, b: 0.2672659, a: 1}
+  iconColor: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
+  iconColor_highlight: {r: 0.8962264, g: 0.7956883, b: 0.19023676, a: 1}
+  textColor_primary: {r: 0, g: 0, b: 0, a: 1}
+  textColor_secondary: {r: 0.31132078, g: 0.30126718, b: 0.21880564, a: 1}
   backgroundSprite: {fileID: 21300000, guid: 73535fa08fc9c6f4b8e5a52290383c77, type: 3}
+  inputBackgroundSprite: {fileID: 21300000, guid: 5d805c22857e93f478965c6df675ced5, type: 3}
   buttonSprite: {fileID: 21300000, guid: 9c043c1bb7c437d4c93221a88e8832c3, type: 3}
+  handleSprite: {fileID: -3139954693662994168, guid: 1bafa66ab4fe44d48b97e8efe78aa199, type: 3}
   font: {fileID: 11400000, guid: 85cf44ec96077194386e518c3419d88e, type: 2}

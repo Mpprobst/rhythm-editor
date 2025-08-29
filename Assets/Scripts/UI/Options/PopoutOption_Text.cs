@@ -66,6 +66,6 @@ public class PopoutOption_Text : PopoutOption
         base.SetStyle(style);
         inputField.textComponent.font = style.font;
         inputField.placeholder.GetComponent<Text>().font = style.font;
-        inputField.image.sprite = style.buttonSprite;
+        inputField.image.sprite = style.inputBackgroundSprite;
     }
 }

@@ -82,14 +82,16 @@ public class PopoutOption_Number : PopoutOption_Text
     public override void SetColors(UIStyleData style)
     {
         base.SetColors(style);
-        slider.image.color = style.backgroundColor_secondary;
+        slider.GetComponentInChildren<Image>().color = style.backgroundColor_secondary;
+        slider.fillRect.GetComponent<Image>().color = style.iconColor_highlight;
         slider.handleRect.GetComponent<Image>().color = style.backgroundColor;
     }
 
     public override void SetStyle(UIStyleData style)
     {
         base.SetStyle(style);
-        slider.image.sprite = style.backgroundSprite;
-        slider.handleRect.GetComponent<Image>().sprite = style.buttonSprite;
+        slider.GetComponentInChildren<Image>().sprite = style.inputBackgroundSprite;
+        slider.fillRect.GetComponent<Image>().sprite = style.inputBackgroundSprite;
+        slider.handleRect.GetComponent<Image>().sprite = style.handleSprite;
     }
 }

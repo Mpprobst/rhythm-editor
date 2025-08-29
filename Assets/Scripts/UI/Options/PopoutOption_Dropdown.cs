@@ -96,7 +96,8 @@ public class PopoutOption_Dropdown : PopoutOption
     public override void SetStyle(UIStyleData style)
     {
         base.SetStyle(style);
-        dropdown.image.sprite = style.buttonSprite;
+        dropdown.image.sprite = style.inputBackgroundSprite;
+        dropdown.template.GetComponent<Image>().sprite = style.inputBackgroundSprite;   // first one should be the Item Background. If not, then oops
         dropdown.captionText.font = style.font;
         dropdown.template.GetComponentInChildren<Text>().font = style.font;
     }

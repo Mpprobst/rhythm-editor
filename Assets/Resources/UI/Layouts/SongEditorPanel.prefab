@@ -530,6 +530,7 @@ GameObject:
   - component: {fileID: 3998993146194141508}
   - component: {fileID: 351263692453298079}
   - component: {fileID: 6206254994723406344}
+  - component: {fileID: 4622285664537077805}
   m_Layer: 5
   m_Name: Scrollbar Horizontal
   m_TagString: Untagged
@@ -644,6 +645,25 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4622285664537077805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3335297474566309290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0891a6b76badd8c4693f5242f6b01a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelImage: {fileID: 0}
+  backgroundImage: {fileID: 351263692453298079}
+  specialBackgroundImage: {fileID: 0}
+  inputImage: {fileID: 3880447515181061286}
+  handleImage: {fileID: 0}
+  primaryText: {fileID: 0}
+  secondaryText: {fileID: 0}
 --- !u!1 &4091277680482657195
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +677,7 @@ GameObject:
   - component: {fileID: 2434375520752636930}
   - component: {fileID: 4648116623688149929}
   - component: {fileID: 2428650766653629233}
+  - component: {fileID: 772799125260535548}
   m_Layer: 5
   m_Name: Section Track
   m_TagString: Untagged
@@ -712,8 +733,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 5d805c22857e93f478965c6df675ced5, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -766,6 +787,25 @@ MonoBehaviour:
     and pos
 
     - '
+--- !u!114 &772799125260535548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4091277680482657195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0891a6b76badd8c4693f5242f6b01a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelImage: {fileID: 0}
+  backgroundImage: {fileID: 0}
+  specialBackgroundImage: {fileID: 2434375520752636930}
+  inputImage: {fileID: 0}
+  handleImage: {fileID: 0}
+  primaryText: {fileID: 3262851231622081893}
+  secondaryText: {fileID: 0}
 --- !u!1 &4111233325811847062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,6 +1186,7 @@ GameObject:
   - component: {fileID: 6643442847652142755}
   - component: {fileID: 6751955742844907233}
   - component: {fileID: 5265021113952853001}
+  - component: {fileID: 635023665871959354}
   m_Layer: 5
   m_Name: Scrollbar Vertical
   m_TagString: Untagged
@@ -1260,6 +1301,25 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &635023665871959354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9015985673120555645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0891a6b76badd8c4693f5242f6b01a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelImage: {fileID: 0}
+  backgroundImage: {fileID: 6751955742844907233}
+  specialBackgroundImage: {fileID: 0}
+  inputImage: {fileID: 2506485505911044001}
+  handleImage: {fileID: 0}
+  primaryText: {fileID: 0}
+  secondaryText: {fileID: 0}
 --- !u!1 &9151220016120270347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,27 +1466,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 708296005101999026, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 708296005101999026, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 708296005101999026, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 63
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 708296005101999026, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 459.47058
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 708296005101999026, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 35.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 708296005101999026, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -233.73529
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 752804129433215993, guid: c6caeb3304096384d963ed8d398404f0, type: 3}
       propertyPath: m_text
@@ -1604,7 +1664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 859519033661253461, guid: 98e6ff0474a9fbf4eb8f7fa0c91e953e, type: 3}
       propertyPath: m_AspectRatio
-      value: 17.6
+      value: 17.1
       objectReference: {fileID: 0}
     - target: {fileID: 1072065111619752361, guid: 98e6ff0474a9fbf4eb8f7fa0c91e953e, type: 3}
       propertyPath: m_Name
@@ -1636,7 +1696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3435155668821868163, guid: 98e6ff0474a9fbf4eb8f7fa0c91e953e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 880
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3435155668821868163, guid: 98e6ff0474a9fbf4eb8f7fa0c91e953e, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1744,7 +1804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8573508552351972145, guid: 98e6ff0474a9fbf4eb8f7fa0c91e953e, type: 3}
       propertyPath: m_AspectRatio
-      value: 17.6
+      value: 17.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

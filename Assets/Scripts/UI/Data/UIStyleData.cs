@@ -18,8 +18,11 @@ public class UIStyleData : ScriptableObject
     // no text highlight because it will use the same as icon
 
     public Sprite backgroundSprite;
+    public bool isBackgroundTiled;
     public Sprite inputBackgroundSprite;
+    public bool isInputBackgroundTiled;
     public Sprite buttonSprite;
+    public bool isButtonTiled;
     public Sprite handleSprite;
     public TMPro.TMP_FontAsset font;
 

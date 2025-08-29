@@ -91,7 +91,9 @@ public class PopoutOption_Number : PopoutOption_Text
     {
         base.SetStyle(style);
         slider.GetComponentInChildren<Image>().sprite = style.inputBackgroundSprite;
+        slider.GetComponentInChildren<Image>().type = style.isInputBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
         slider.fillRect.GetComponent<Image>().sprite = style.inputBackgroundSprite;
+        slider.fillRect.GetComponent<Image>().type = style.isInputBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
         slider.handleRect.GetComponent<Image>().sprite = style.handleSprite;
     }
 }

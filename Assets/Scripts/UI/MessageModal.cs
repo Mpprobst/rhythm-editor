@@ -123,10 +123,13 @@ public class MessageModal : MonoBehaviour, IUIStyle
     public void SetStyle(UIStyleData style)
     {
         backroundImage.sprite = style.backgroundSprite;
+        backroundImage.type = style.isBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
         headerText.font = style.font;
         messageText.font = style.font;
         button1.image.sprite = style.buttonSprite;
+        button1.image.type = style.isInputBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
         button2.image.sprite = style.buttonSprite;
+        button2.image.type = style.isInputBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
         buttonText1.font = style.font;
         buttonText2.font = style.font;
     }

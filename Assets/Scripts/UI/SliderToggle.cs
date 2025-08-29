@@ -64,6 +64,7 @@ public class SliderToggle : MonoBehaviour, IUIStyle
     {
         // maybe set the sprites? not sure
         background.sprite = style.inputBackgroundSprite;
+        background.type = style.isInputBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
         switchButton.sprite = style.handleSprite;
 
     }

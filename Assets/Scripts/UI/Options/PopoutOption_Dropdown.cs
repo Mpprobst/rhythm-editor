@@ -97,7 +97,9 @@ public class PopoutOption_Dropdown : PopoutOption
     {
         base.SetStyle(style);
         dropdown.image.sprite = style.inputBackgroundSprite;
+        dropdown.image.type = style.isInputBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
         dropdown.template.GetComponent<Image>().sprite = style.inputBackgroundSprite;   // first one should be the Item Background. If not, then oops
+        dropdown.template.GetComponent<Image>().type = style.isInputBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
         dropdown.captionText.font = style.font;
         dropdown.template.GetComponentInChildren<Text>().font = style.font;
     }

@@ -57,7 +57,7 @@ public class UIElement_Label : UIElement
 
     public override void SetColors(UIStyleData style)
     {
-        label.color = style.textColor_primary;
+        label.color = style.textColor_secondary;
         icon.color = style.iconColor;
     }
 

@@ -17,6 +17,10 @@ public class UIRibbon : MonoBehaviour, IUIStyle
 
     public void SetStyle(UIStyleData style)
     {
-        
+        if (background)
+        {
+            background.sprite = style.buttonSprite;
+            background.type = style.isButtonTiled ? Image.Type.Tiled : Image.Type.Sliced;
+        }
     }
 }

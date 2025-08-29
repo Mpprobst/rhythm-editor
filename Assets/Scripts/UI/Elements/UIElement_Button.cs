@@ -51,6 +51,7 @@ public class UIElement_Button : UIElement_Label
     public override void SetColors(UIStyleData style)
     {
         base.SetColors(style);
+        label.color = style.textColor_primary;
         button.image.color = style.backgroundColor;
         baseColorBackground = style.backgroundColor;
         highlightColorBackground = style.backgroundColor_highlight;
@@ -63,5 +64,6 @@ public class UIElement_Button : UIElement_Label
     {
         base.SetStyle(style);
         button.image.sprite = style.buttonSprite;
+        button.image.type = style.isButtonTiled ? Image.Type.Tiled : Image.Type.Sliced;
     }
 }

@@ -21,10 +21,15 @@ public class SimpleUIElementStyler : MonoBehaviour, IUIStyle
     public void SetStyle(UIStyleData style)
     {
         if (panelImage) panelImage.sprite = style.backgroundSprite;
-        if (backgroundImage) backgroundImage.sprite = style.inputBackgroundSprite;
+        if (panelImage) panelImage.type = style.isBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
+        if (backgroundImage) backgroundImage.sprite = style.buttonSprite;
+        if (backgroundImage) backgroundImage.type = style.isButtonTiled ? Image.Type.Tiled : Image.Type.Sliced;
         if (specialBackgroundImage) specialBackgroundImage.sprite = style.inputBackgroundSprite;
+        if (specialBackgroundImage) specialBackgroundImage.type = style.isInputBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
         if (inputImage) inputImage.sprite = style.inputBackgroundSprite;
+        if (inputImage) inputImage.type = style.isInputBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
         if (handleImage) handleImage.sprite = style.handleSprite;
+        if (handleImage) handleImage.type = style.isInputBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
         if (primaryText) primaryText.font = style.font;
         if (secondaryText) secondaryText.font = style.font;
     }

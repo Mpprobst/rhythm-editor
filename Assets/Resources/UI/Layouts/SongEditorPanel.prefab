@@ -1077,6 +1077,7 @@ GameObject:
   - component: {fileID: 3216283388467554279}
   - component: {fileID: 4582586522452531690}
   - component: {fileID: 2853449973326205098}
+  - component: {fileID: 6785742343745428808}
   m_Layer: 5
   m_Name: SongEditor
   m_TagString: Untagged
@@ -1174,6 +1175,25 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6785742343745428808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8260688175696627711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0891a6b76badd8c4693f5242f6b01a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelImage: {fileID: 0}
+  backgroundImage: {fileID: 4582586522452531690}
+  specialBackgroundImage: {fileID: 0}
+  inputImage: {fileID: 0}
+  handleImage: {fileID: 0}
+  primaryText: {fileID: 0}
+  secondaryText: {fileID: 0}
 --- !u!1 &9015985673120555645
 GameObject:
   m_ObjectHideFlags: 0

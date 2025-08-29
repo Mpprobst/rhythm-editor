@@ -33,12 +33,13 @@ public class PopoutOption_Action : PopoutOption
     public override void SetColors(UIStyleData style)
     {
         base.SetColors(style);
-        button.image.color = style.backgroundColor_secondary;
+        button.image.color = style.backgroundColor_tertiary;
     }
 
     public override void SetStyle(UIStyleData style)
     {
         base.SetStyle(style);
         button.image.sprite = style.buttonSprite;
+        button.image.type = style.isButtonTiled ? Image.Type.Tiled : Image.Type.Sliced;
     }
 }

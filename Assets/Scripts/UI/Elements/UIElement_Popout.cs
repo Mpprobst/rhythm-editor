@@ -127,6 +127,7 @@ public class UIElement_Popout : MonoBehaviour, IUIStyle
     {
         titleLabel.font = style.font;
         background.sprite = style.backgroundSprite;
+        background.type = style.isBackgroundTiled ? Image.Type.Tiled : Image.Type.Sliced;
         closeButton.image.sprite = style.buttonSprite;
         closeButton.GetComponentInChildren<Text>().font = style.font;
     }

@@ -58,7 +58,7 @@ public class PopoutOption_Text : PopoutOption
         base.SetColors(style);
         inputField.textComponent.color = style.textColor_primary;
         inputField.placeholder.color = style.textColor_secondary;
-        inputField.image.color = style.backgroundColor_secondary;
+        inputField.image.color = style.backgroundColor_tertiary;
     }
 
     public override void SetStyle(UIStyleData style)
@@ -67,5 +67,6 @@ public class PopoutOption_Text : PopoutOption
         inputField.textComponent.font = style.font;
         inputField.placeholder.GetComponent<Text>().font = style.font;
         inputField.image.sprite = style.inputBackgroundSprite;
+        inputField.image.type = style.isInputBackgroundTiled? Image.Type.Tiled : Image.Type.Sliced;
     }
 }
